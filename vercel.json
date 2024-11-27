@@ -6,6 +6,6 @@
   "outputDirectory": ".next",
   "regions": ["lhr1"],
   "env": {
-    "NEXT_PUBLIC_SITE_URL": "https://chelford-mobile-services2.vercel.app"
+    "NEXT_PUBLIC_SITE_URL": "https://toilet-hire-website-b0nvfq3ow-lammies-projects.vercel.app"
   }
 }
