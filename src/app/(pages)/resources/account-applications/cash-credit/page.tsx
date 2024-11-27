@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description: "Apply for a Cash or Credit account with CMS Toilet Hire. Complete our application form to get started.",
 };
 
-const inputClasses = "w-full px-3 py-2 border-2 border-gray-500 rounded-md bg-gray-100 focus:border-primary focus:ring-1 focus:ring-primary text-gray-900";
-const selectClasses = "w-full px-3 py-2 border-2 border-gray-500 rounded-md bg-gray-100 focus:border-primary focus:ring-1 focus:ring-primary text-gray-900";
-const checkboxClasses = "rounded border-2 border-gray-500 text-primary focus:ring-primary";
+const inputClasses = "w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white focus:border-primary focus:ring-1 focus:ring-primary";
+const selectClasses = "w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white focus:border-primary focus:ring-1 focus:ring-primary";
+const checkboxClasses = "rounded border-2 border-gray-300 text-primary focus:ring-primary";
 const labelClasses = "block text-sm font-medium mb-2 dark:text-primary";
 const sectionTitleClasses = "text-lg font-medium mb-4 dark:text-primary";
 

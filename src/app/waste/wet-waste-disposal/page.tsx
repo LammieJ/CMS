@@ -20,7 +20,7 @@ const WetWasteDisposalPage = () => {
           CMS Toilet Hire: Reliable Sewage Waste Disposal Services
         </h1>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-lg dark:text-primary mb-8">
           At CMS Toilet Hire, we specialize in professional sewage waste disposal services to keep your site clean, compliant, and hassle-free. With a versatile fleet of tankers ranging from compact 4×4 vehicles capable of handling 40 gallons to HGVs with a capacity of up to 4,000 gallons, we&apos;re equipped to manage liquid waste from any site, including those with restricted access.
         </p>
 
@@ -36,14 +36,14 @@ const WetWasteDisposalPage = () => {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Flexible Service Options</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary">
             We offer both weekly scheduled empties and ad-hoc services tailored to your needs. Our transparent pricing is based on a minimum 4-week hire, ensuring cost-effective and reliable service.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose CMS Toilet Hire for Sewage Waste Disposal?</h2>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">Fast Response Times:</span>
               We aim to address your enquiries immediately to minimize disruptions to your site operations.
@@ -78,7 +78,7 @@ const WetWasteDisposalPage = () => {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Key Features</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li>Weekly or ad-hoc waste collection</li>
             <li>Licensed by the Environmental Agency</li>
             <li>Fleet options from 40 to 4,000 gallons</li>
@@ -89,7 +89,7 @@ const WetWasteDisposalPage = () => {
 
         <section className="bg-primary/5 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Learn More</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-lg dark:text-primary mb-6">
             If you&apos;re looking for a trusted partner to handle your site&apos;s sewage waste, contact our friendly team today! Call us to discuss your requirements and experience the CMS Toilet Hire difference.
           </p>
           <div className="flex flex-wrap gap-4">

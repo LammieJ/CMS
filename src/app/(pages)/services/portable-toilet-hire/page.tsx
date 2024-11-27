@@ -21,10 +21,10 @@ export default function PortableToiletHire() {
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
           <h2 className="text-2xl font-semibold mb-4">Affordable & Flexible Solutions</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Our portable toilet solutions combine affordability with flexibility, making them perfect for construction sites, outdoor events, and temporary facilities. With competitive pricing and flexible hire periods, we ensure you get the best value for your requirements.
           </p>
-          <ul className="list-disc list-inside mb-4 text-gray-700">
+          <ul className="list-disc list-inside mb-4 dark:text-primary">
             <li>Short and long-term hire options available</li>
             <li>Weekly servicing included in price</li>
             <li>Flexible payment terms for long-term hires</li>
@@ -52,10 +52,10 @@ export default function PortableToiletHire() {
       <div className="grid md:grid-cols-3 gap-8 mb-12">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Construction Sites</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             HSE-compliant portable toilets perfect for construction sites and building projects. Includes weekly servicing and maintenance.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>HSE compliance guaranteed</li>
             <li>Robust construction</li>
             <li>Easy site access</li>
@@ -64,10 +64,10 @@ export default function PortableToiletHire() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Outdoor Events</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Clean and well-maintained portable toilets suitable for festivals, sporting events, and outdoor gatherings.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Quick setup</li>
             <li>Fresh water supply</li>
             <li>Hand washing stations</li>
@@ -76,10 +76,10 @@ export default function PortableToiletHire() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Long-term Hire</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Competitive rates for long-term hire with flexible rental periods and regular maintenance included.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Flexible terms</li>
             <li>Volume discounts</li>
             <li>Regular maintenance</li>
@@ -93,7 +93,7 @@ export default function PortableToiletHire() {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-3">Quality Facilities</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Non-slip flooring</li>
               <li>Ventilation system</li>
               <li>Internal lighting</li>
@@ -104,7 +104,7 @@ export default function PortableToiletHire() {
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-3">Service Package</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Weekly cleaning service</li>
               <li>Waste removal</li>
               <li>Supply replenishment</li>
@@ -121,21 +121,21 @@ export default function PortableToiletHire() {
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Daily Hire</h3>
-            <p className="text-gray-700">From £30/unit</p>
-            <p className="text-sm text-gray-600">Perfect for short events</p>
+            <p className="dark:text-primary">From £30/unit</p>
+            <p className="text-sm dark:text-primary">Perfect for short events</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Weekly Hire</h3>
-            <p className="text-gray-700">From £80/unit</p>
-            <p className="text-sm text-gray-600">Ideal for construction sites</p>
+            <p className="dark:text-primary">From £80/unit</p>
+            <p className="text-sm dark:text-primary">Ideal for construction sites</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Monthly Hire</h3>
-            <p className="text-gray-700">From £240/unit</p>
-            <p className="text-sm text-gray-600">Best value for long-term</p>
+            <p className="dark:text-primary">From £240/unit</p>
+            <p className="text-sm dark:text-primary">Best value for long-term</p>
           </div>
         </div>
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-sm dark:text-primary">
           * Prices include delivery, collection, and weekly servicing within 40-mile radius of Chester
         </p>
       </div>

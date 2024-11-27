@@ -27,10 +27,10 @@ export default function LocationsPage() {
 
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold mb-4">
             Toilet Hire Locations
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg dark:text-primary max-w-2xl mx-auto">
             Professional portable toilet hire services available across Chester and surrounding areas. 
             We provide reliable and efficient toilet solutions within a 40-mile radius.
           </p>
@@ -42,7 +42,7 @@ export default function LocationsPage() {
             className={cn(
               "flex items-center gap-2 px-4 py-2 rounded-md",
               "bg-white border border-gray-200 hover:border-[#0891b2]",
-              "text-gray-700 hover:text-[#0891b2] transition-colors",
+              "dark:text-primary hover:text-[#0891b2] transition-colors",
               "focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:ring-offset-2"
             )}
           >
@@ -64,20 +64,20 @@ export default function LocationsPage() {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 group-hover:text-[#0891b2] transition-colors">
+                  <h2 className="text-xl font-semibold group-hover:text-[#0891b2] transition-colors">
                     {location.name}
                   </h2>
-                  <p className="mt-2 text-gray-600">
+                  <p className="mt-2 dark:text-primary">
                     Portable Toilet Hire in {location.name}
                   </p>
                 </div>
                 <MapPin className="h-6 w-6 text-[#0891b2] group-hover:scale-110 transition-transform" />
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm dark:text-primary">
                   Available Services:
                 </span>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600">
+                <ul className="mt-2 space-y-1 text-sm dark:text-primary">
                   <li>• Standard Portable Toilets</li>
                   <li>• Luxury Toilet Units</li>
                   <li>• Event Solutions</li>

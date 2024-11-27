@@ -74,22 +74,22 @@ export default function ConstructionCaseStudy() {
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">100%</p>
-              <p className="text-gray-600">HSE compliance</p>
+              <p className="dark:text-primary">HSE compliance</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">52</p>
-              <p className="text-gray-600">Weeks of service</p>
+              <p className="dark:text-primary">Weeks of service</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">0</p>
-              <p className="text-gray-600">HSE incidents</p>
+              <p className="dark:text-primary">HSE incidents</p>
             </div>
           </div>
 
           <h2 className="text-2xl font-semibold mb-4">Client Testimonial</h2>
           <blockquote className="border-l-4 border-[#0891b2] pl-4 italic mb-8">
             "Chelford Mobile Services provided reliable, consistent service throughout our year-long project. Their attention to HSE requirements and flexible approach to our changing needs made them an invaluable partner."
-            <footer className="text-gray-600 mt-2">- Site Manager</footer>
+            <footer className="dark:text-primary mt-2">- Site Manager</footer>
           </blockquote>
 
           <h2 className="text-2xl font-semibold mb-4">Key Learnings</h2>
@@ -113,7 +113,7 @@ export default function ConstructionCaseStudy() {
 
         <div className="mt-12 bg-gray-50 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-semibold mb-4">Plan Your Construction Project</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="dark:text-primary mb-6">
             Need reliable, HSE-compliant sanitation facilities for your construction site? Let's discuss your requirements.
           </p>
           <Link

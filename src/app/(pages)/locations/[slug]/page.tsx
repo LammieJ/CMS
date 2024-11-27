@@ -23,19 +23,19 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex items-center gap-4 mb-6">
             <MapPin className="h-8 w-8 text-[#0891b2]" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold">
               Portable Toilet Hire & Waste Services in {location.name}
             </h1>
           </div>
 
           <div className="prose prose-lg max-w-none">
-            <p className="text-gray-600 mb-6">
+            <p className="dark:text-primary mb-6">
               CMS Toilet Hire delivers comprehensive portable toilet and waste management solutions in {location.name} and surrounding areas. 
               With over 20 years of experience, we specialize in both toilet hire and professional waste services, ensuring your site 
               remains compliant and hygienic at all times.
             </p>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold mb-4">
               Areas We Cover in {location.name}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -45,7 +45,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
                   className={cn(
                     "p-3 rounded-md bg-gray-50",
                     "border border-gray-200",
-                    "text-gray-700 text-sm"
+                    "dark:text-primary text-sm"
                   )}
                 >
                   {area}
@@ -53,7 +53,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               ))}
             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold mb-4">
               Our Comprehensive Services
             </h2>
             
@@ -61,7 +61,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <h3 className="text-xl font-semibold text-[#0891b2] mb-3">
                 Toilet Hire Solutions
               </h3>
-              <ul className="space-y-3 text-gray-600">
+              <ul className="space-y-3 dark:text-primary">
                 <li className="flex items-center gap-2">
                   • Standard Portable Toilets - Ideal for construction sites and outdoor events
                 </li>
@@ -84,7 +84,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <h3 className="text-xl font-semibold text-[#0891b2] mb-3">
                 Professional Waste Services
               </h3>
-              <ul className="space-y-3 text-gray-600">
+              <ul className="space-y-3 dark:text-primary">
                 <li className="flex items-center gap-2">
                   • Portable Toilet Servicing - Regular maintenance and cleaning
                 </li>
@@ -107,7 +107,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               <h3 className="text-xl font-semibold text-[#0891b2] mb-2">
                 Why Choose CMS Toilet Hire in {location.name}?
               </h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 dark:text-primary">
                 <li>• Over 20 years of industry experience</li>
                 <li>• Full waste carrier license and environmental compliance</li>
                 <li>• Same-day delivery and collection available</li>
@@ -120,10 +120,10 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             </div>
 
             <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold mb-2">
                 Industries We Serve
               </h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 dark:text-primary">
                 <li>• Construction and Building Sites</li>
                 <li>• Events and Festivals</li>
                 <li>• Weddings and Private Functions</li>

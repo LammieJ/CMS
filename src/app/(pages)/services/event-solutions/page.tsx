@@ -21,10 +21,10 @@ export default function EventSolutions() {
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
           <h2 className="text-2xl font-semibold mb-4">Customized Event Sanitation Solutions</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             From intimate gatherings to major festivals, we provide tailored sanitation solutions that scale to your event's needs. Our experienced team ensures the right facilities are in the right place at the right time.
           </p>
-          <ul className="list-disc list-inside mb-4 text-gray-700">
+          <ul className="list-disc list-inside mb-4 dark:text-primary">
             <li>Custom site planning and layout</li>
             <li>Flexible capacity options</li>
             <li>On-site maintenance teams</li>
@@ -46,10 +46,10 @@ export default function EventSolutions() {
       <div className="grid md:grid-cols-3 gap-8 mb-12">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Festival Solutions</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Comprehensive sanitation solutions for music festivals, food festivals, and cultural events.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>High-capacity units</li>
             <li>24/7 maintenance</li>
             <li>Queue management</li>
@@ -58,10 +58,10 @@ export default function EventSolutions() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Sporting Events</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Mobile facilities perfect for marathons, tournaments, and outdoor competitions.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Route-based placement</li>
             <li>Quick-access design</li>
             <li>Hydration station integration</li>
@@ -70,10 +70,10 @@ export default function EventSolutions() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Private Events</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Tailored solutions for garden parties, community events, and private gatherings.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Discrete placement</li>
             <li>Luxury options</li>
             <li>Flexible duration</li>
@@ -87,7 +87,7 @@ export default function EventSolutions() {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-3">Site Planning</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Professional site assessment</li>
               <li>Capacity planning</li>
               <li>Access route planning</li>
@@ -98,7 +98,7 @@ export default function EventSolutions() {
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-3">Event Support</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Dedicated event manager</li>
               <li>On-site maintenance team</li>
               <li>Emergency response service</li>
@@ -112,32 +112,32 @@ export default function EventSolutions() {
 
       <div className="bg-blue-50 p-8 rounded-lg mb-12">
         <h2 className="text-2xl font-semibold mb-4">Event Calculator</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="dark:text-primary mb-6">
           Use our guide to estimate facilities needed for your event:
         </p>
         <div className="grid md:grid-cols-4 gap-4">
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Small Events</h3>
-            <p className="text-gray-700">Up to 250 guests</p>
-            <p className="text-sm text-gray-600">4-6 units recommended</p>
+            <p className="dark:text-primary">Up to 250 guests</p>
+            <p className="text-sm dark:text-primary">4-6 units recommended</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Medium Events</h3>
-            <p className="text-gray-700">250-500 guests</p>
-            <p className="text-sm text-gray-600">8-12 units recommended</p>
+            <p className="dark:text-primary">250-500 guests</p>
+            <p className="text-sm dark:text-primary">8-12 units recommended</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Large Events</h3>
-            <p className="text-gray-700">500-1000 guests</p>
-            <p className="text-sm text-gray-600">15-20 units recommended</p>
+            <p className="dark:text-primary">500-1000 guests</p>
+            <p className="text-sm dark:text-primary">15-20 units recommended</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Festivals</h3>
-            <p className="text-gray-700">1000+ guests</p>
-            <p className="text-sm text-gray-600">Custom configuration</p>
+            <p className="dark:text-primary">1000+ guests</p>
+            <p className="text-sm dark:text-primary">Custom configuration</p>
           </div>
         </div>
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-sm dark:text-primary">
           * Final numbers depend on event duration, alcohol service, and other factors
         </p>
       </div>

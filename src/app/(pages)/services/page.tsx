@@ -63,7 +63,7 @@ export default function Services() {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8">Our Services</h1>
       
-      <p className="text-xl text-gray-700 mb-12">
+      <p className="text-xl dark:text-primary mb-12">
         Discover our comprehensive range of toilet hire solutions, tailored to meet any requirement from construction sites to luxury events.
       </p>
 
@@ -81,7 +81,7 @@ export default function Services() {
             <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-600 transition-colors">
               Portable Toilet Hire
             </h2>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Reliable and clean portable toilet solutions for construction sites, outdoor work areas, and basic event needs.
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function Services() {
             <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-600 transition-colors">
               Luxury Toilet Hire
             </h2>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Premium toilet facilities perfect for weddings, corporate events, and VIP functions.
             </p>
           </div>
@@ -119,7 +119,7 @@ export default function Services() {
             <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-600 transition-colors">
               Event Solutions
             </h2>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Customized toilet hire packages for festivals, sporting events, and large gatherings.
             </p>
           </div>
@@ -131,25 +131,25 @@ export default function Services() {
         <div className="grid md:grid-cols-4 gap-6">
           <div>
             <h3 className="text-lg font-semibold mb-2">Reliable Service</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Punctual delivery and collection with professional maintenance.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Local Coverage</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Serving Chester and surrounding areas within a 40-mile radius.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Quality Guaranteed</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Well-maintained units meeting all hygiene standards.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Flexible Options</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Solutions for any event size or duration.
             </p>
           </div>

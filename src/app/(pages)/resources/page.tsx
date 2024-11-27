@@ -90,7 +90,7 @@ export default function ResourcesPage() {
       
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Resources & Guides</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg dark:text-primary max-w-2xl mx-auto">
           Everything you need to know about portable toilet hire, from planning guides to maintenance tips.
         </p>
       </div>
@@ -111,7 +111,7 @@ export default function ResourcesPage() {
           {faqs.map((faq, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm p-6">
               <h3 className="font-medium text-lg mb-2">{faq.question}</h3>
-              <p className="text-gray-600">{faq.answer}</p>
+              <p className="dark:text-primary">{faq.answer}</p>
             </div>
           ))}
         </div>
@@ -137,7 +137,7 @@ export default function ResourcesPage() {
               className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
             >
               <h3 className="font-medium text-lg mb-2">{guide.title}</h3>
-              <p className="text-gray-600">{guide.description}</p>
+              <p className="dark:text-primary">{guide.description}</p>
               <div className="mt-4 text-[#0891b2] font-medium">
                 Download PDF →
               </div>
@@ -166,7 +166,7 @@ export default function ResourcesPage() {
               className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
             >
               <h3 className="font-medium text-lg mb-2">{study.title}</h3>
-              <p className="text-gray-600">{study.description}</p>
+              <p className="dark:text-primary">{study.description}</p>
               <div className="mt-4 text-[#0891b2] font-medium">
                 Read More →
               </div>
@@ -178,7 +178,7 @@ export default function ResourcesPage() {
       {/* Contact Section */}
       <section className="text-center bg-gray-50 rounded-lg p-8">
         <h2 className="text-2xl font-semibold mb-4">Need More Information?</h2>
-        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+        <p className="dark:text-primary mb-6 max-w-2xl mx-auto">
           Our team is here to help you make the best decision for your specific needs.
         </p>
         <Link

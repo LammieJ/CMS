@@ -73,7 +73,7 @@ export default function IndustriesPage() {
       
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Industries We Serve</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg dark:text-primary max-w-2xl mx-auto">
           Tailored portable toilet solutions for every industry, ensuring comfort, compliance, and convenience for your specific needs.
         </p>
       </div>
@@ -95,7 +95,7 @@ export default function IndustriesPage() {
             </div>
             <ul className="space-y-3">
               {industry.features.map((feature) => (
-                <li key={feature} className="flex items-center text-gray-700">
+                <li key={feature} className="flex items-center dark:text-primary">
                   <svg className="w-5 h-5 mr-2 text-[#0891b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
@@ -112,26 +112,26 @@ export default function IndustriesPage() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <h3 className="text-xl font-medium mb-3">Tailored Service</h3>
-            <p className="text-gray-600">Every industry has unique requirements. We provide customised solutions that perfectly match your specific needs.</p>
+            <p className="dark:text-primary">Every industry has unique requirements. We provide customised solutions that perfectly match your specific needs.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <h3 className="text-xl font-medium mb-3">Compliance Guaranteed</h3>
-            <p className="text-gray-600">All our units meet or exceed industry regulations and standards, ensuring peace of mind for your business.</p>
+            <p className="dark:text-primary">All our units meet or exceed industry regulations and standards, ensuring peace of mind for your business.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <h3 className="text-xl font-medium mb-3">Flexible Hire Terms</h3>
-            <p className="text-gray-600">From one-day events to long-term construction projects, we offer flexible hiring options to suit your timeline.</p>
+            <p className="dark:text-primary">From one-day events to long-term construction projects, we offer flexible hiring options to suit your timeline.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-sm">
             <h3 className="text-xl font-medium mb-3">Professional Support</h3>
-            <p className="text-gray-600">Our experienced team provides expert advice and reliable support throughout your hire period.</p>
+            <p className="dark:text-primary">Our experienced team provides expert advice and reliable support throughout your hire period.</p>
           </div>
         </div>
       </div>
 
       <div className="mt-16 text-center">
         <h2 className="text-2xl font-semibold mb-4">Need Industry-Specific Advice?</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="dark:text-primary mb-8 max-w-2xl mx-auto">
           Contact our team for expert guidance on choosing the right solution for your industry.
         </p>
         <a 

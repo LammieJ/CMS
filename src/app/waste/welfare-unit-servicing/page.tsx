@@ -20,7 +20,7 @@ export default function WelfareUnitServicingPage() {
           Welfare Unit Servicing by CMS Toilet Hire – Reliable and Professional Solutions
         </h1>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-lg dark:text-primary mb-8">
           At CMS Toilet Hire, we offer comprehensive welfare unit servicing to ensure your facilities remain hygienic and fully stocked. Our service includes emptying the waste tank, replenishing consumables such as soap, hand towels, and toilet rolls, and replacing chemicals to maintain cleanliness and safety. Whether you have a welfare unit with a tank capacity of 70 to 300 gallons, we provide tailored servicing options, including weekly, twice-weekly, or ad-hoc visits.
         </p>
 
@@ -36,14 +36,14 @@ export default function WelfareUnitServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Expert Liquid Waste Removal Services</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary">
             Our dedicated team of NSQ-certified service engineers boasts years of experience in liquid waste removal. This expertise ensures that all work is carried out to the highest standards, giving you peace of mind. We also supply electronic waste transfer documents for complete transparency and compliance.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Flexible Service Options</h2>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">Tank Capacities:</span>
               From 70 gallons to 300 gallons
@@ -65,8 +65,8 @@ export default function WelfareUnitServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Advanced Fleet for Welfare Unit Servicing</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">Our fleet is equipped to handle a variety of site conditions:</p>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary mb-4">Our fleet is equipped to handle a variety of site conditions:</p>
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">Mercedes Sprinter Tankers:</span>
               Fitted with bespoke 300-gallon vacuum tanks, these vehicles are ideal for servicing in busy or restricted areas. With hazard lights for safe operation, they meet all health and safety requirements.
@@ -80,14 +80,14 @@ export default function WelfareUnitServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Affordable Hire Packages</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary">
             Our welfare unit servicing is available on minimum four-week hire terms for weekly services. This ensures a reliable and cost-effective solution for your sanitation needs.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose CMS Toilet Hire?</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li>Professional and highly-trained staff</li>
             <li>State-of-the-art vehicles for all terrain types</li>
             <li>Commitment to eco-friendly and legal waste disposal</li>
@@ -97,7 +97,7 @@ export default function WelfareUnitServicingPage() {
 
         <section className="bg-primary/5 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Request a Quote Today</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-lg dark:text-primary mb-6">
             For dependable welfare unit servicing across the UK, contact CMS Toilet Hire. Whether your site is in a city centre, a rural location, or somewhere in between, our team is ready to provide expert servicing with unmatched reliability. Let us help keep your facilities running smoothly!
           </p>
           <div className="flex flex-wrap gap-4">

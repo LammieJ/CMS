@@ -20,7 +20,7 @@ export default function PortableToiletServicingPage() {
           Chemical Toilet Servicing by CMS Toilet Hire – Reliable and Efficient Solutions
         </h1>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-lg dark:text-primary mb-8">
           At CMS Toilet Hire, we offer comprehensive chemical toilet servicing, ensuring your facilities remain clean, hygienic, and well-stocked. Our service includes emptying the waste tank, replenishing chemicals, and restocking essential consumables such as soap, hand towels, and toilet rolls.
         </p>
 
@@ -36,7 +36,7 @@ export default function PortableToiletServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose CMS for Chemical Toilet Servicing?</h2>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">Expert Team:</span>
               Our service drivers are highly experienced and hold the National Sanitation Qualification (NSQ), ensuring professional and safe waste removal.
@@ -54,7 +54,7 @@ export default function PortableToiletServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Servicing Details</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li><strong>Effluent Limit:</strong> Up to 70 gallons per service. Excess effluent will incur additional charges on a pro-rata basis.</li>
             <li><strong>Access Requirements:</strong> Unrestricted site access is required. A no-access or abortive charge may apply if access is denied.</li>
             <li><strong>Timing:</strong> Each service is allocated 45 minutes, with any additional time charged at a standard rate.</li>
@@ -73,8 +73,8 @@ export default function PortableToiletServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">State-of-the-Art Fleet for All Terrains</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">Our versatile fleet is equipped to handle any environment:</p>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary mb-4">Our versatile fleet is equipped to handle any environment:</p>
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">Urban and Event-Friendly Vehicles:</span>
               Our Mercedes Sprinter tankers, equipped with 300-gallon vacuum tanks and hazard lights, are ideal for busy or crowded areas.
@@ -88,7 +88,7 @@ export default function PortableToiletServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Benefits of Choosing CMS Toilet Hire</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li>NSQ-Qualified Engineers: Trust the UK's most qualified professionals to maintain your facilities.</li>
             <li>Customisable Service Frequencies: Tailor your schedule with weekly, twice-weekly, or one-off servicing.</li>
             <li>Health and Safety Compliance: Our vehicles are equipped to safely operate in high-traffic or hard-to-reach areas.</li>
@@ -97,7 +97,7 @@ export default function PortableToiletServicingPage() {
 
         <section className="bg-primary/5 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Book Your Chemical Toilet Servicing Today!</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-lg dark:text-primary mb-6">
             CMS Toilet Hire provides reliable and effective solutions to keep your chemical toilets in excellent condition. Whether you're managing a construction site, festival, or remote event, our team ensures your facilities remain fully operational and hygienic.
           </p>
           <p className="text-xl font-semibold mb-6">Ready to Book?</p>

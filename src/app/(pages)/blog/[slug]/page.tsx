@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="prose lg:prose-xl mx-auto">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex items-center gap-4 text-gray-600">
+          <div className="flex items-center gap-4 dark:text-primary">
             <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-GB', {
               day: 'numeric',
               month: 'long',
@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.tags && (
               <div className="flex gap-2">
                 {post.tags.map(tag => (
-                  <span key={tag} className="bg-gray-100 px-2 py-1 rounded text-sm">
+                  <span key={tag} className="bg-gray-100 px-2 py-1 rounded text-sm dark:text-primary">
                     {tag}
                   </span>
                 ))}
@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div className="mt-12 bg-gray-50 p-8 rounded-lg">
           <h2 className="text-2xl font-semibold mb-4">Need help with toilet hire?</h2>
-          <p className="mb-6">
+          <p className="mb-6 dark:text-primary">
             Contact our team for expert advice and competitive quotes for your event or project.
           </p>
           <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">

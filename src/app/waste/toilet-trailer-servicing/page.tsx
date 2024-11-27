@@ -20,11 +20,11 @@ export default function ToiletTrailerServicingPage() {
           Professional Toilet Trailer Servicing with CMS Toilet Hire
         </h1>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-lg dark:text-primary mb-8">
           At CMS Toilet Hire, we provide comprehensive toilet trailer servicing to keep your facilities in top condition. Our service includes:
         </p>
 
-        <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary mb-8">
           <li>Emptying waste tanks efficiently and hygienically</li>
           <li>Thorough cleaning of filters and tanks to prevent residue build-up</li>
           <li>Replacing chemicals to maintain freshness and functionality</li>
@@ -44,17 +44,17 @@ export default function ToiletTrailerServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Expert Service from Qualified Professionals</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary">
             Our team consists of NSQ-certified Service Drivers (National Sanitation Qualification) with extensive experience in liquid waste removal. This ensures your toilet trailers are serviced by professionals with the highest standards of training and expertise.
           </p>
         </section>
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Flexible Servicing Options</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-lg dark:text-primary mb-4">
             We offer a range of servicing frequencies to suit your needs, including:
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li>Weekly servicing</li>
             <li>Twice-weekly servicing</li>
             <li>Ad-hoc one-off services</li>
@@ -63,7 +63,7 @@ export default function ToiletTrailerServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Hire Terms and Pricing</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg dark:text-primary">
             All servicing is available with a minimum hire period of 4 weeks for weekly services. Our flexible approach ensures you get the service you need, when you need it.
           </p>
         </section>
@@ -71,10 +71,10 @@ export default function ToiletTrailerServicingPage() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Specialist Equipment for Every Scenario</h2>
           <h3 className="text-2xl font-semibold mb-4">Tailored Fleet for Professional Service</h3>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-lg dark:text-primary mb-4">
             Our fleet is designed for versatility and efficiency:
           </p>
-          <ul className="list-none space-y-4 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-none space-y-4 text-lg dark:text-primary">
             <li className="flex items-start">
               <span className="font-semibold mr-2">3.5-tonne vehicles:</span>
               Equipped with bespoke 300-gallon vacuum tanks for waste removal, ideal for servicing in busy or crowded spaces, complete with hazard lights for safety.
@@ -88,7 +88,7 @@ export default function ToiletTrailerServicingPage() {
 
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose CMS Toilet Hire?</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg text-gray-600 dark:text-gray-300">
+          <ul className="list-disc pl-6 space-y-2 text-lg dark:text-primary">
             <li>Highly trained engineers with industry-recognised qualifications</li>
             <li>Comprehensive cleaning and maintenance, reducing the risk of breakdowns</li>
             <li>Health and safety compliant vehicles for safe servicing in all environments</li>
@@ -97,7 +97,7 @@ export default function ToiletTrailerServicingPage() {
 
         <section className="bg-primary/5 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-4">Contact Us Today</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-lg dark:text-primary mb-6">
             Ready to arrange professional toilet trailer servicing? Get in touch with our team to discuss your requirements and schedule your service.
           </p>
           <div className="flex flex-wrap gap-4">

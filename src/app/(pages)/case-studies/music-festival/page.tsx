@@ -74,22 +74,22 @@ export default function MusicFestivalCaseStudy() {
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">100%</p>
-              <p className="text-gray-600">Uptime maintained</p>
+              <p className="dark:text-primary">Uptime maintained</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">0</p>
-              <p className="text-gray-600">Service interruptions</p>
+              <p className="dark:text-primary">Service interruptions</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-[#0891b2] mb-2">95%</p>
-              <p className="text-gray-600">Customer satisfaction</p>
+              <p className="dark:text-primary">Customer satisfaction</p>
             </div>
           </div>
 
           <h2 className="text-2xl font-semibold mb-4">Client Testimonial</h2>
           <blockquote className="border-l-4 border-[#0891b2] pl-4 italic mb-8">
             "Chelford Mobile Services exceeded our expectations. Their proactive approach and attention to detail ensured our festival attendees had access to clean, well-maintained facilities throughout the entire event."
-            <footer className="text-gray-600 mt-2">- Festival Director</footer>
+            <footer className="dark:text-primary mt-2">- Festival Director</footer>
           </blockquote>
 
           <h2 className="text-2xl font-semibold mb-4">Key Learnings</h2>
@@ -103,7 +103,7 @@ export default function MusicFestivalCaseStudy() {
 
         <div className="mt-12 bg-gray-50 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-semibold mb-4">Plan Your Event</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="dark:text-primary mb-6">
             Looking to organize a large-scale event? Let us help you plan the perfect sanitation solution.
           </p>
           <Link

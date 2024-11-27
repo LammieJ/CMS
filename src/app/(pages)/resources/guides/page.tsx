@@ -40,7 +40,7 @@ export default function Guides() {
               </div>
               <div>
                 <h2 className="text-xl font-semibold mb-2">{guide.title}</h2>
-                <p className="text-gray-600">{guide.description}</p>
+                <p className="dark:text-primary">{guide.description}</p>
                 <span className="inline-block mt-4 text-primary font-medium">
                   Download PDF →
                 </span>
@@ -52,7 +52,7 @@ export default function Guides() {
 
       <div className="mt-12 bg-gray-50 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Need Additional Help?</h2>
-        <p className="text-gray-600 mb-4">
+        <p className="dark:text-primary mb-4">
           Our team is available to provide expert guidance on toilet hire requirements for your specific needs.
         </p>
         <Link 

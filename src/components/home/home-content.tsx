@@ -151,14 +151,14 @@ const HomeContent = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in animation-delay-200">
             <Link
               href="tel:07534362251"
-              className="group inline-flex items-center justify-center bg-background text-primary hover:bg-background/90 px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <Phone className="w-6 h-6 mr-3" />
               <span>Call Now</span>
             </Link>
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center bg-transparent text-primary-foreground px-8 py-4 rounded-full font-semibold border-2 border-primary-foreground hover:bg-background hover:text-primary transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <Calendar className="w-6 h-6 mr-3" />
               <span>Book Online</span>

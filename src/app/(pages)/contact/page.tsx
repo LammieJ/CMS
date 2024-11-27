@@ -114,7 +114,7 @@ function ContactForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium dark:text-primary mb-1">
             Name *
           </label>
           <input
@@ -129,7 +129,7 @@ function ContactForm() {
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium dark:text-primary mb-1">
             Email *
           </label>
           <input
@@ -144,7 +144,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="phone" className="block text-sm font-medium dark:text-primary mb-1">
             Phone
           </label>
           <input
@@ -158,7 +158,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="service" className="block text-sm font-medium dark:text-primary mb-1">
             Service Required *
           </label>
           <select
@@ -179,7 +179,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="eventDate" className="block text-sm font-medium dark:text-primary mb-1">
             Event/Start Date
           </label>
           <input
@@ -193,7 +193,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="duration" className="block text-sm font-medium dark:text-primary mb-1">
             Hire Duration
           </label>
           <select
@@ -214,7 +214,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="location" className="block text-sm font-medium dark:text-primary mb-1">
             Delivery Location
           </label>
           <input
@@ -229,7 +229,7 @@ function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="message" className="block text-sm font-medium dark:text-primary mb-1">
             Additional Requirements *
           </label>
           <textarea
@@ -269,14 +269,14 @@ export default function Contact() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold mb-2">Phone</h3>
-              <p className="text-gray-700">
+              <p className="dark:text-primary">
                 <a href="tel:07534362251" className="hover:text-[#0891b2]">07534 362251</a>
               </p>
-              <p className="text-sm text-gray-600">Available 24/7 for emergencies</p>
+              <p className="text-sm dark:text-primary">Available 24/7 for emergencies</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <p className="text-gray-700">
+              <p className="dark:text-primary">
                 <a href="mailto:info@chelfordmobileservices.co.uk" className="hover:text-[#0891b2]">
                   info@chelfordmobileservices.co.uk
                 </a>
@@ -284,9 +284,9 @@ export default function Contact() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2">Office Hours</h3>
-              <p className="text-gray-700">Monday - Friday: 8am - 6pm</p>
-              <p className="text-gray-700">Saturday: 9am - 4pm</p>
-              <p className="text-gray-700">Sunday: Closed (Emergency service available)</p>
+              <p className="dark:text-primary">Monday - Friday: 8am - 6pm</p>
+              <p className="dark:text-primary">Saturday: 9am - 4pm</p>
+              <p className="dark:text-primary">Sunday: Closed (Emergency service available)</p>
             </div>
           </div>
         </div>
@@ -299,7 +299,7 @@ export default function Contact() {
       <div className="grid md:grid-cols-3 gap-8 mb-12">
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-3">Emergency Service</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             24/7 emergency support available for existing customers.
           </p>
           <p className="font-semibold">Emergency: 07534 362251</p>
@@ -307,10 +307,10 @@ export default function Contact() {
         
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-3">Service Area</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Serving Chester and surrounding areas within a 40-mile radius.
           </p>
-          <ul className="text-gray-700 list-disc list-inside">
+          <ul className="dark:text-primary list-disc list-inside">
             <li>Chester</li>
             <li>Ellesmere Port</li>
             <li>Wrexham</li>
@@ -320,10 +320,10 @@ export default function Contact() {
 
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="text-xl font-semibold mb-3">Response Time</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             We aim to respond to all enquiries within:
           </p>
-          <ul className="text-gray-700 list-disc list-inside">
+          <ul className="dark:text-primary list-disc list-inside">
             <li>Phone: Immediate</li>
             <li>Email: Within 2 hours</li>
             <li>Quote requests: Same business day</li>
@@ -336,19 +336,19 @@ export default function Contact() {
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-semibold mb-2">How far in advance should I book?</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               We recommend booking at least 2 weeks in advance for events, though we can often accommodate last-minute requests.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">What information do you need for a quote?</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Event date, location, duration, expected attendance, and type of facility needed will help us provide an accurate quote.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2">Do you offer site visits?</h3>
-            <p className="text-gray-700">
+            <p className="dark:text-primary">
               Yes, we can arrange site visits for large events or complex installations to ensure the best solution for your needs.
             </p>
           </div>

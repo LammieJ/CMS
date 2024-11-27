@@ -21,7 +21,7 @@ export default async function BlogPage() {
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-4">Expert Insights & Guides</h1>
-        <p className="text-xl text-gray-600 mb-12">
+        <p className="text-xl dark:text-primary mb-12">
           Discover professional tips, industry insights, and comprehensive guides for successful event planning and toilet hire.
         </p>
 
@@ -42,7 +42,7 @@ export default async function BlogPage() {
                     </div>
                   </div>
                   <div className="md:col-span-3">
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                    <div className="flex items-center gap-4 text-sm dark:text-primary mb-3">
                       <time dateTime={post.date} className="font-medium">
                         {new Date(post.date).toLocaleDateString('en-GB', {
                           day: 'numeric',
@@ -56,7 +56,7 @@ export default async function BlogPage() {
                     <h2 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
                       {post.title}
                     </h2>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="dark:text-primary mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                     {post.tags && post.tags.length > 0 && (
@@ -64,7 +64,7 @@ export default async function BlogPage() {
                         {post.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700"
+                            className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 dark:text-primary"
                           >
                             {tag}
                           </span>
@@ -80,7 +80,7 @@ export default async function BlogPage() {
 
         <div className="mt-16 bg-gray-50 rounded-lg p-8">
           <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="dark:text-primary mb-6">
             Get the latest insights, tips, and industry updates delivered directly to your inbox.
           </p>
           <form className="flex gap-4">
@@ -102,7 +102,7 @@ export default async function BlogPage() {
         <div className="mt-16 grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold mb-4">Need Expert Advice?</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="dark:text-primary mb-4">
               Our team is here to help you plan your event's sanitation needs.
             </p>
             <Link
@@ -127,7 +127,7 @@ export default async function BlogPage() {
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold mb-4">Quick Quote</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="dark:text-primary mb-4">
               Get an instant quote for your toilet hire requirements.
             </p>
             <Link

@@ -21,10 +21,10 @@ export default function LuxuryToiletHire() {
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
           <h2 className="text-2xl font-semibold mb-4">Premium Bathroom Experience</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Elevate your event with our luxury toilet facilities that rival high-end hotels. Perfect for weddings, corporate functions, and VIP events, our premium units offer all the comforts and elegance your guests expect.
           </p>
-          <ul className="list-disc list-inside mb-4 text-gray-700">
+          <ul className="list-disc list-inside mb-4 dark:text-primary">
             <li>Hotel-standard fixtures and fittings</li>
             <li>Climate-controlled environment</li>
             <li>Luxury hand wash and toiletries</li>
@@ -46,10 +46,10 @@ export default function LuxuryToiletHire() {
       <div className="grid md:grid-cols-3 gap-8 mb-12">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Wedding Facilities</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Make your special day perfect with our elegant bathroom trailers designed specifically for weddings.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Bridal preparation area</li>
             <li>Vanity stations</li>
             <li>Premium toiletries</li>
@@ -58,10 +58,10 @@ export default function LuxuryToiletHire() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">Corporate Events</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Maintain your professional image with our executive-level facilities suitable for any corporate function.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Professional attendant service</li>
             <li>Corporate branding options</li>
             <li>Executive finishing</li>
@@ -70,10 +70,10 @@ export default function LuxuryToiletHire() {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-3">VIP Functions</h3>
-          <p className="text-gray-700 mb-4">
+          <p className="dark:text-primary mb-4">
             Exceed expectations with our highest specification units for prestigious events and VIP gatherings.
           </p>
-          <ul className="list-disc list-inside text-gray-700">
+          <ul className="list-disc list-inside dark:text-primary">
             <li>Premium finishes</li>
             <li>Luxury amenities</li>
             <li>Dedicated attendant</li>
@@ -87,7 +87,7 @@ export default function LuxuryToiletHire() {
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold mb-3">Interior Amenities</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Porcelain sanitaryware</li>
               <li>Hot running water</li>
               <li>Vanity mirrors with LED lighting</li>
@@ -98,7 +98,7 @@ export default function LuxuryToiletHire() {
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-3">Premium Services</h3>
-            <ul className="list-disc list-inside text-gray-700">
+            <ul className="list-disc list-inside dark:text-primary">
               <li>Professional attendant option</li>
               <li>Regular servicing throughout event</li>
               <li>Fresh flower service</li>
@@ -115,18 +115,18 @@ export default function LuxuryToiletHire() {
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">2+1 Trailer</h3>
-            <p className="text-gray-700">2 Ladies, 1 Gents + Urinal</p>
-            <p className="text-sm text-gray-600">Ideal for up to 80 guests</p>
+            <p className="dark:text-primary">2 Ladies, 1 Gents + Urinal</p>
+            <p className="text-sm dark:text-primary">Ideal for up to 80 guests</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">3+2 Trailer</h3>
-            <p className="text-gray-700">3 Ladies, 2 Gents + Urinal</p>
-            <p className="text-sm text-gray-600">Perfect for up to 150 guests</p>
+            <p className="dark:text-primary">3 Ladies, 2 Gents + Urinal</p>
+            <p className="text-sm dark:text-primary">Perfect for up to 150 guests</p>
           </div>
           <div className="bg-white p-4 rounded shadow">
             <h3 className="font-semibold mb-2">Luxury Suite</h3>
-            <p className="text-gray-700">Multiple configurations</p>
-            <p className="text-sm text-gray-600">Suitable for 200+ guests</p>
+            <p className="dark:text-primary">Multiple configurations</p>
+            <p className="text-sm dark:text-primary">Suitable for 200+ guests</p>
           </div>
         </div>
       </div>

@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description: "Apply for a Pay As You Go account with CMS Toilet Hire. Complete our application form to get started.",
 };
 
-const inputClasses = "w-full px-3 py-2 border-2 border-gray-500 rounded-md bg-gray-100 focus:border-primary focus:ring-1 focus:ring-primary text-gray-900";
-const fileInputClasses = "w-full px-3 py-2 border-2 border-gray-500 rounded-md bg-gray-100 focus:border-primary focus:ring-1 focus:ring-primary text-gray-900 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90";
-const checkboxClasses = "rounded border-2 border-gray-500 text-primary focus:ring-primary";
+const inputClasses = "w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white focus:border-primary focus:ring-1 focus:ring-primary";
+const fileInputClasses = "w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white focus:border-primary focus:ring-1 focus:ring-primary file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90";
+const checkboxClasses = "rounded border-2 border-gray-300 text-primary focus:ring-primary";
 const labelClasses = "block text-sm font-medium mb-2 dark:text-primary";
 const sectionTitleClasses = "text-lg font-medium mb-4 dark:text-primary";
 
@@ -74,12 +74,12 @@ export default function PayAsYouGoApplication() {
               <div>
                 <label className={labelClasses}>Primary ID (Driver's License or Passport) *</label>
                 <input type="file" className={fileInputClasses} required />
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Please provide a clear photo or scan</p>
+                <p className="mt-1 text-sm dark:text-primary">Please provide a clear photo or scan</p>
               </div>
               <div>
                 <label className={labelClasses}>Secondary ID (Recent Utility Bill) *</label>
                 <input type="file" className={fileInputClasses} required />
-                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Must be dated within the last 3 months</p>
+                <p className="mt-1 text-sm dark:text-primary">Must be dated within the last 3 months</p>
               </div>
             </div>
           </div>
