@@ -1,0 +1,40 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="#f3f4f6"/>
+  
+  <!-- Decorative elements -->
+  <rect x="256" y="256" width="512" height="512" fill="#e5e7eb"/>
+  
+  <!-- Icon placeholder -->
+  <g transform="translate(384, 384)">
+    <rect width="256" height="256" fill="#d1d5db"/>
+    <path d="M 64 96 L 192 96 M 64 128 L 192 128 M 64 160 L 192 160" 
+          stroke="#9ca3af" 
+          stroke-width="16" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Company name -->
+  <text x="512" y="850" 
+        font-family="Arial" 
+        font-size="32" 
+        fill="#4b5563" 
+        text-anchor="middle">
+    Chelford Mobile Services
+  </text>
+  
+  <!-- Blog indicator -->
+  <text x="512" y="200" 
+        font-family="Arial" 
+        font-size="48" 
+        fill="#4b5563" 
+        text-anchor="middle">
+    Blog Post
+  </text>
+  
+  <!-- Decorative corners -->
+  <path d="M 32 32 L 32 96 L 96 32 Z" fill="#60a5fa"/>
+  <path d="M 928 32 L 928 96 L 992 32 Z" fill="#60a5fa"/>
+  <path d="M 32 928 L 32 992 L 96 992 Z" fill="#60a5fa"/>
+  <path d="M 928 928 L 928 992 L 992 992 Z" fill="#60a5fa"/>
+</svg>

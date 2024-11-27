@@ -1,0 +1,21 @@
+{
+  "name": "Chelford Mobile Services",
+  "short_name": "CMS",
+  "description": "Professional toilet hire services offering portable, luxury, and event-specific solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0891b2",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

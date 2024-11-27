@@ -1,0 +1,107 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog
+   /Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<< /Type /Pages
+   /Kids [3 0 R]
+   /Count 1
+>>
+endobj
+
+3 0 obj
+<< /Type /Page
+   /Parent 2 0 R
+   /MediaBox [0 0 612 792]
+   /Contents 4 0 R
+   /Resources << /Font << /F1 5 0 R >> >>
+>>
+endobj
+
+4 0 obj
+<< /Length 1200 >>
+stream
+BT
+/F1 24 Tf
+50 700 Td
+(Construction Site Toilet Compliance Guide) Tj
+/F1 12 Tf
+0 -40 Td
+(1. HSE Requirements) Tj
+0 -20 Td
+(□ Minimum facilities based on workforce size:) Tj
+0 -20 Td
+(  - 1-15 workers: 1 toilet) Tj
+0 -20 Td
+(  - 16-30 workers: 2 toilets) Tj
+0 -20 Td
+(  - 31-45 workers: 3 toilets) Tj
+0 -40 Td
+(2. Essential Facilities) Tj
+0 -20 Td
+(□ Separate facilities for men and women) Tj
+0 -20 Td
+(□ Accessible toilet provision) Tj
+0 -20 Td
+(□ Hand washing facilities) Tj
+0 -40 Td
+(3. Location Requirements) Tj
+0 -20 Td
+(□ Within 100m of work area) Tj
+0 -20 Td
+(□ Safe, well-lit access route) Tj
+0 -20 Td
+(□ Level, stable ground) Tj
+0 -40 Td
+(4. Maintenance Standards) Tj
+0 -20 Td
+(□ Daily cleaning schedule) Tj
+0 -20 Td
+(□ Weekly deep clean) Tj
+0 -20 Td
+(□ Regular supply checks) Tj
+0 -40 Td
+(5. Documentation) Tj
+0 -20 Td
+(□ Maintenance logs) Tj
+0 -20 Td
+(□ Inspection records) Tj
+0 -20 Td
+(□ Service schedules) Tj
+0 -40 Td
+(6. Emergency Procedures) Tj
+0 -20 Td
+(□ Contact numbers displayed) Tj
+0 -20 Td
+(□ Backup unit availability) Tj
+0 -20 Td
+(□ Spillage procedures) Tj
+ET
+endstream
+endobj
+
+5 0 obj
+<< /Type /Font
+   /Subtype /Type1
+   /BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 6
+0000000000 65535 f
+0000000010 00000 n
+0000000060 00000 n
+0000000120 00000 n
+0000000250 00000 n
+0000001500 00000 n
+trailer
+<< /Size 6
+   /Root 1 0 R
+>>
+startxref
+1580
+%%EOF

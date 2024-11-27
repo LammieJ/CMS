@@ -1,0 +1,51 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with winter color -->
+  <rect width="1024" height="1024" fill="#e5e7eb"/>
+  
+  <!-- Snow effect -->
+  <circle cx="200" cy="100" r="4" fill="#fff"/>
+  <circle cx="400" cy="150" r="4" fill="#fff"/>
+  <circle cx="600" cy="80" r="4" fill="#fff"/>
+  <circle cx="800" cy="120" r="4" fill="#fff"/>
+  <circle cx="300" cy="200" r="4" fill="#fff"/>
+  <circle cx="700" cy="180" r="4" fill="#fff"/>
+  
+  <!-- Event venue outline with snow -->
+  <rect x="100" y="300" width="824" height="500" stroke="#4b5563" stroke-width="4" fill="#fff" opacity="0.3"/>
+  
+  <!-- Heated toilet facilities (represented as boxes with warmth indicator) -->
+  <g>
+    <rect x="700" y="350" width="150" height="100" fill="#ef4444" opacity="0.6"/>
+    <path d="M 775 370 L 775 430" stroke="#fff" stroke-width="2"/>
+    <circle cx="775" cy="380" r="5" fill="#fff"/>
+  </g>
+  <g>
+    <rect x="700" y="500" width="150" height="100" fill="#ef4444" opacity="0.6"/>
+    <path d="M 775 520 L 775 580" stroke="#fff" stroke-width="2"/>
+    <circle cx="775" cy="530" r="5" fill="#fff"/>
+  </g>
+  <g>
+    <rect x="700" y="650" width="150" height="100" fill="#ef4444" opacity="0.6"/>
+    <path d="M 775 670 L 775 730" stroke="#fff" stroke-width="2"/>
+    <circle cx="775" cy="680" r="5" fill="#fff"/>
+  </g>
+  
+  <!-- Event space elements with winter theme -->
+  <circle cx="300" cy="550" r="150" stroke="#4b5563" stroke-width="4" fill="#fff" opacity="0.3"/>
+  <rect x="500" y="400" width="150" height="300" stroke="#4b5563" stroke-width="4" fill="#fff" opacity="0.3"/>
+  
+  <!-- Snowflakes -->
+  <path d="M 300 500 L 300 600 M 250 550 L 350 550" stroke="#fff" stroke-width="2"/>
+  <path d="M 500 450 L 500 550 M 450 500 L 550 500" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Text -->
+  <text x="512" y="200" font-family="Arial" font-size="48" fill="#1f2937" text-anchor="middle">
+    Winter Event Planning
+  </text>
+  <text x="775" y="320" font-family="Arial" font-size="24" fill="#4b5563" text-anchor="middle">
+    Heated Facilities
+  </text>
+  <text x="300" y="550" font-family="Arial" font-size="24" fill="#4b5563" text-anchor="middle">
+    Event Space
+  </text>
+</svg>
