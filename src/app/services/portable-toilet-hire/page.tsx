@@ -82,6 +82,7 @@ export default function PortableToiletHirePage() {
             src="/images/portable-toilet.jpeg"
             alt="HSE Compliant Portable Toilet Unit"
             fill
+            priority
             className="object-cover"
           />
         </div>
