@@ -47,6 +47,7 @@ export default function EventSolutions() {
             src="/images/event-toilets.svg"
             alt="Event toilet setup with multiple units"
             fill
+            priority
             className="object-cover"
           />
         </div>
