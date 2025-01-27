@@ -1,113 +1,116 @@
-import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
 import { getAllPosts } from '@/lib/blog'
+import { generateBlogSchema, breadcrumbSchema, newsletterSchema } from './metadata'
+import NewsletterForm from '@/components/blog/newsletter-form'
 
-export const metadata: Metadata = {
-  title: 'Blog | Expert Toilet Hire Tips & Insights | Chelford Mobile Services',
-  description: 'Expert advice on portable toilet hire, event planning, and sanitation solutions. Stay updated with the latest industry insights and tips.',
-  keywords: 'toilet hire blog, portable toilet tips, event planning advice, sanitation insights, toilet hire guide',
-  openGraph: {
-    title: 'Blog | Expert Toilet Hire Tips & Insights',
-    description: 'Expert advice and insights on portable toilet hire and event planning.',
-    type: 'website',
+function formatDate(dateString: string) {
+  if (!dateString) return ''
+  
+  try {
+    // Create a date object from the YYYY-MM-DD string
+    const date = new Date(dateString)
+    // Check if the date is valid
+    if (isNaN(date.getTime())) return dateString
+
+    // Format the date using British English locale
+    return new Intl.DateTimeFormat('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(date)
+  } catch (error) {
+    console.error('Error formatting date:', error)
+    return dateString
   }
 }
 
 export default async function BlogPage() {
   const posts = await getAllPosts()
+  const blogSchema = await generateBlogSchema()
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Expert Insights & Guides</h1>
-        <p className="text-xl dark:text-primary mb-12">
-          Discover professional tips, industry insights, and comprehensive guides for successful event planning and toilet hire.
-        </p>
+    <div className="container mx-auto px-4 py-16">
+      <Script
+        id="blog-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="newsletter-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsletterSchema) }}
+      />
+      <div className="blog-container">
+        <div className="blog-header">
+          <h1 className="blog-title">Expert Insights & Guides</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-200 mb-12">
+            Discover professional tips, industry insights, and comprehensive guides for successful event planning and toilet hire.
+          </p>
+        </div>
 
-        <div className="space-y-12">
+        <div className="blog-grid">
           {posts.map((post, index) => (
-            <article key={post.slug} className="group">
+            <article key={post.slug} className="blog-card group">
               <Link href={`/blog/${post.slug}`} className="block">
-                <div className="grid md:grid-cols-5 gap-8 items-start">
-                  <div className="md:col-span-2">
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
-                      <Image
-                        src={post.image || '/blog/placeholder.svg'}
-                        alt={post.title}
-                        fill
-                        priority={index === 0}
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
+                <div className="blog-card-image">
+                  <Image
+                    src={post.image || '/blog/placeholder.svg'}
+                    alt={post.title}
+                    fill
+                    priority={true}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="blog-card-content">
+                  <div className="blog-card-meta">
+                    <time dateTime={post.date} className="font-medium">
+                      {formatDate(post.date)}
+                    </time>
+                    <span>•</span>
+                    <span>5 min read</span>
                   </div>
-                  <div className="md:col-span-3">
-                    <div className="flex items-center gap-4 text-sm dark:text-primary mb-3">
-                      <time dateTime={post.date} className="font-medium">
-                        {new Date(post.date).toLocaleDateString('en-GB', {
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric'
-                        })}
-                      </time>
-                      <span>•</span>
-                      <span>5 min read</span>
+                  <h2 className="blog-card-title group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="blog-card-excerpt">
+                    {post.excerpt}
+                  </p>
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 dark:bg-gray-700 dark:text-gray-200"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                    <h2 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="dark:text-primary mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {post.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 dark:text-primary"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  )}
                 </div>
               </Link>
             </article>
           ))}
         </div>
 
-        <div className="mt-16 bg-gray-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-          <p className="dark:text-primary mb-6">
-            Get the latest insights, tips, and industry updates delivered directly to your inbox.
-          </p>
-          <form className="flex gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <button
-              type="submit"
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+        <NewsletterForm />
 
         <div className="mt-16 grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Need Expert Advice?</h2>
-            <p className="dark:text-primary mb-4">
+          <div className="bg-white dark:bg-gray-800/50 p-8 rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Need Expert Advice?</h2>
+            <p className="text-gray-600 dark:text-gray-200 mb-6">
               Our team is here to help you plan your event's sanitation needs.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700"
+              className="inline-flex items-center text-primary hover:text-primary/90"
             >
               Contact Us
               <svg
@@ -125,14 +128,14 @@ export default async function BlogPage() {
               </svg>
             </Link>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Quick Quote</h2>
-            <p className="dark:text-primary mb-4">
+          <div className="bg-white dark:bg-gray-800/50 p-8 rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Quick Quote</h2>
+            <p className="text-gray-600 dark:text-gray-200 mb-6">
               Get an instant quote for your toilet hire requirements.
             </p>
             <Link
               href="/pricing"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700"
+              className="inline-flex items-center text-primary hover:text-primary/90"
             >
               View Pricing
               <svg

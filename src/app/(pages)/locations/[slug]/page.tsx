@@ -4,8 +4,11 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import Link from 'next/link';
+import Script from 'next/script';
+import Image from 'next/image';
 import { locationData } from '../location-data';
 import { cn } from '@/lib/utils';
+import { generateLocationSchema } from './metadata';
 
 export default function LocationPage({ params }: { params: { slug: string } }) {
   const location = locationData[params.slug];
@@ -17,18 +20,28 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
   // Create the contact URL with location and message parameters
   const contactUrl = `/contact?location=${encodeURIComponent(location.name)}&message=${encodeURIComponent(`Enquiry from ${location.name} location page`)}`;
 
+  const locationSchema = generateLocationSchema(location.name, location.areas);
+
   return (
     <div className="container mx-auto px-4 py-12">
+      <Script
+        id="location-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationSchema) }}
+      />
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8">
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-4 mb-6 relative">
+            <div className="absolute -top-24 left-0" id="top"></div>
             <MapPin className="h-8 w-8 text-[#0891b2]" />
             <h1 className="text-3xl font-bold">
               Portable Toilet Hire & Waste Services in {location.name}
             </h1>
           </div>
 
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none" itemScope itemType="https://schema.org/Article">
+            <meta itemProp="name" content={`Portable Toilet Hire in ${location.name}`} />
+            <meta itemProp="description" content={`Professional portable toilet and waste management solutions in ${location.name} and surrounding areas.`} />
             <p className="dark:text-primary mb-6">
               CMS Toilet Hire delivers comprehensive portable toilet and waste management solutions in {location.name} and surrounding areas. 
               With over 20 years of experience, we specialize in both toilet hire and professional waste services, ensuring your site 
@@ -133,7 +146,44 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
               </ul>
             </div>
 
+            <div className="mt-12 mb-8">
+              <h2 className="text-2xl font-semibold mb-4">Gallery</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/portable-toilet.jpeg"
+                    alt={`Standard Portable Toilet in ${location.name}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority
+                  />
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/cmstoilethire.jpg"
+                    alt={`Luxury Toilet Unit in ${location.name}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/portable-toilet.svg"
+                    alt={`Event Toilet Solutions in ${location.name}`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="mt-8 text-center">
+              <a href="#top" className="text-[#0891b2] hover:underline mb-8 inline-block">
+                Back to Top
+              </a>
               <Link
                 href={contactUrl}
                 className={cn(

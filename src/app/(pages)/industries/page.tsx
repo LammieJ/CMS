@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Industries We Serve | Chelford Mobile Services",
@@ -80,7 +81,11 @@ export default function IndustriesPage() {
       
       <div className="grid md:grid-cols-2 gap-8 mt-12">
         {industries.map((industry) => (
-          <div key={industry.title} className="bg-white rounded-lg shadow-lg p-8 transition-transform hover:scale-[1.02]">
+          <Link 
+            key={industry.title} 
+            href={`/industries/${industry.title.toLowerCase().replace(/ & /g, '-and-').replace(/\s+/g, '-')}`}
+            className="bg-white rounded-lg shadow-lg p-8 transition-transform hover:scale-[1.02] block"
+          >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 mr-4 relative flex-shrink-0">
                 <Image
@@ -103,7 +108,7 @@ export default function IndustriesPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -134,12 +139,12 @@ export default function IndustriesPage() {
         <p className="dark:text-primary mb-8 max-w-2xl mx-auto">
           Contact our team for expert guidance on choosing the right solution for your industry.
         </p>
-        <a 
+        <Link 
           href="/contact" 
           className="inline-block bg-[#0891b2] text-white px-8 py-4 rounded-lg hover:bg-[#0891b2]/90 transition-all duration-200 transform hover:scale-105"
         >
           Get in Touch
-        </a>
+        </Link>
       </div>
     </div>
   )

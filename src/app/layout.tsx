@@ -5,6 +5,7 @@ import { Header } from '../components/layout/navigation-menu'
 import { Footer } from '../components/layout/footer'
 import { ThemeProvider } from '../components/theme/theme-provider'
 import GoogleAnalytics from '../components/analytics/google-analytics'
+import { AnimatedBackground } from '../components/ui/animated-background'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -87,8 +88,9 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <GoogleAnalytics />
       </head>
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body className={`${inter.className} bg-background text-foreground min-h-screen`}>
         <ThemeProvider>
+          <AnimatedBackground />
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">

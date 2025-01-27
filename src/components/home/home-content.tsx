@@ -1,173 +1,270 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { Phone, Truck, Calendar, Award } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useInView } from "framer-motion"
+import Image from "next/image"
+import { useRef, useState, useEffect } from "react"
 
-const services = [
-  {
-    title: "Standard Portable Toilets",
-    description: "Ideal for construction sites and outdoor events",
-    href: "/services/portable-toilet-hire",
-    icon: Truck,
-    delay: "animation-delay-100"
-  },
-  {
-    title: "Luxury Toilet Trailers",
-    description: "Perfect for weddings and corporate events",
-    href: "/services/luxury-toilet-hire",
-    icon: Award,
-    delay: "animation-delay-200"
-  },
-  {
-    title: "Event Solutions",
-    description: "Comprehensive solutions for festivals and large gatherings",
-    href: "/services/event-solutions",
-    icon: Calendar,
-    delay: "animation-delay-300"
-  }
-];
-
-const HomeContent = () => {
-  const [location, setLocation] = useState<string>("");
-
+export function HomeContent() {
+  const [location, setLocation] = useState<string | null>(null)
+  const imageRef = useRef(null)
+  
   useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        const response = await fetch('/api/ip');
-        const data = await response.json();
+    fetch('/api/ip')
+      .then(res => res.json())
+      .then(data => {
         if (data.location && data.location !== 'Unknown Location') {
-          setLocation(data.location);
+          setLocation(data.location.split(',')[0]) // Just get the city name
         }
-      } catch (error) {
-        console.error('Error fetching location:', error);
-      }
-    };
+      })
+      .catch(err => console.error('Error fetching location:', err))
+  }, [])
 
-    fetchLocation();
-  }, []);
+  const servicesRef = useRef(null)
+  const featuresRef = useRef(null)
+  const ctaRef = useRef(null)
+
+  const imageInView = useInView(imageRef, { once: true, margin: "-20%" })
+  const servicesInView = useInView(servicesRef, { once: true, margin: "-20%" })
+  const featuresInView = useInView(featuresRef, { once: true, margin: "-20%" })
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-20%" })
+
+  const bounceVariants = {
+    hidden: { opacity: 0, y: 150 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.6,
+        duration: 1.2,
+        stiffness: 150,
+        damping: 8
+      }
+    }
+  }
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2
+      }
+    }
+  }
 
   return (
-    <div className="flex flex-col">
-      <section className="relative bg-background py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5" />
-        </div>
-        <div className="container mx-auto px-4 relative">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="w-full lg:w-[55%]">
-              <h1 className="animate-fade-in text-4xl md:text-7xl font-bold text-foreground dark:text-primary mb-6">
-                PORTABLE TOILET HIRE
-                {location && (
-                  <span className="block text-2xl md:text-4xl text-primary mt-4 animate-fade-in animation-delay-50">
-                    In {location}
-                  </span>
-                )}
-                <span className="block text-2xl md:text-4xl text-primary mt-4 animate-fade-in animation-delay-100">
-                  CLEAN, RELIABLE, AFFORDABLE
-                </span>
-              </h1>
-              <p className="text-xl text-muted-foreground dark:text-primary/80 mb-12 animate-fade-in animation-delay-200">
-                Professional toilet hire solutions for events, construction sites, and special occasions across Cheshire and surrounding areas.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 animate-fade-in animation-delay-300">
-                <Link
-                  href="/contact"
-                  className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <span className="flex items-center justify-center">
-                    Get Quote
-                    <svg className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </Link>
-                <Link
-                  href="/services"
-                  className="group bg-background text-primary border-primary hover:bg-primary/5 px-8 py-4 rounded-full font-semibold border-2 transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <span className="flex items-center justify-center">
-                    Learn More
-                    <svg className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </span>
-                </Link>
-              </div>
-            </div>
-            <div className="w-full lg:w-[45%] animate-fade-in animation-delay-400">
-              <img
-                src="/images/cmstoilethire.jpg"
-                alt="CMS Toilet Hire Services"
-                className="w-full h-[400px] object-cover rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {services.map((service, index) => (
-              <div key={index} className={`text-center p-8 group hover:bg-primary/5 rounded-2xl transition-all duration-300 animate-fade-in ${service.delay}`}>
-                <div className="w-20 h-20 bg-primary/10 group-hover:bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors">
-                  <service.icon className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-4 text-foreground dark:text-primary">{service.title}</h3>
-                <p className="text-muted-foreground dark:text-primary/80 text-lg">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-muted">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 animate-fade-in text-foreground dark:text-primary">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Link key={index} href={service.href} className={`group animate-fade-in ${service.delay}`}>
-                <div className="bg-background p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h3 className="text-2xl font-semibold mb-4 text-foreground dark:text-primary group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground dark:text-primary/80 text-lg">{service.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 animate-fade-in">
-            Ready to Book Your Toilet Hire?
+    <div className="container mx-auto px-4">
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center py-16 sm:py-24"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 0.6,
+            duration: 1.2,
+            stiffness: 150,
+            damping: 8
+          }}
+        >
+          <h1 className="text-5xl sm:text-7xl font-bold mb-6">
+            PORTABLE TOILET
+            <br />
+            HIRE
+          </h1>
+          {location && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-xl sm:text-2xl text-primary mb-4"
+            >
+              Serving {location} and surrounding areas
+            </motion.p>
+          )}
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-8">
+            CLEAN, RELIABLE, AFFORDABLE
           </h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto animate-fade-in animation-delay-100">
-            Contact us today for a free quote and expert advice
+          <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Professional toilet hire solutions for events, construction sites, and special
+            occasions across Cheshire, Merseyside and Greater Manchester.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in animation-delay-200">
-            <Link
-              href="tel:07534362251"
-              className="group inline-flex items-center justify-center bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <Phone className="w-6 h-6 mr-3" />
-              <span>Call Now</span>
-            </Link>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full font-semibold transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <Calendar className="w-6 h-6 mr-3" />
-              <span>Book Online</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 0.6,
+            duration: 1.2,
+            stiffness: 150,
+            damping: 8,
+            delay: 0.2
+          }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+        >
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/contact"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium text-lg flex items-center gap-2"
+          >
+            Get Quote →
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="tel:+441234567890"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium text-lg flex items-center gap-2"
+          >
+            Call Us <span>📞</span>
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="/services"
+            className="border border-primary text-primary hover:bg-primary/10 px-8 py-3 rounded-lg font-medium text-lg flex items-center gap-2"
+          >
+            Learn More →
+          </motion.a>
+        </motion.div>
+        <motion.div
+          ref={imageRef}
+          initial={{ opacity: 0, y: 150 }}
+          animate={imageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 150 }}
+          transition={{
+            type: "spring",
+            bounce: 0.6,
+            duration: 1.2,
+            stiffness: 150,
+            damping: 8
+          }}
+          className="relative w-full max-w-4xl mx-auto aspect-[16/9] rounded-lg overflow-hidden"
+        >
+          <Image
+            src="/images/cmstoilethire.jpg"
+            alt="CMS Toilet Hire Services"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+      </motion.div>
 
-export default HomeContent;
+      {/* Services Section */}
+      <motion.div
+        ref={servicesRef}
+        initial="hidden"
+        animate={servicesInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-16"
+      >
+        {[
+          {
+            icon: "/images/portable-toilet.svg",
+            title: "Portable Toilets",
+            description: "Standard portable toilets suitable for construction sites and outdoor events."
+          },
+          {
+            icon: "/images/luxury-toilet.svg",
+            title: "Luxury Toilets",
+            description: "Premium toilet trailers perfect for weddings and corporate events."
+          },
+          {
+            icon: "/images/event-toilets.svg",
+            title: "Event Solutions",
+            description: "Complete sanitation solutions for festivals and large-scale events."
+          }
+        ].map((service, index) => (
+          <motion.div
+            key={index}
+            variants={bounceVariants}
+            className="p-6 rounded-lg border border-primary/20 backdrop-blur-sm"
+          >
+            <Image
+              src={service.icon}
+              alt={service.title}
+              width={64}
+              height={64}
+              className="mb-4"
+            />
+            <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+            <p className="text-muted-foreground">{service.description}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Features Section */}
+      <motion.div
+        ref={featuresRef}
+        initial="hidden"
+        animate={featuresInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        className="py-16"
+      >
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Why Choose Us?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              title: "24/7 Service",
+              description: "Round-the-clock support and emergency response"
+            },
+            {
+              title: "Regular Cleaning",
+              description: "Thorough cleaning and maintenance services"
+            },
+            {
+              title: "Quick Delivery",
+              description: "Fast and efficient delivery to your location"
+            },
+            {
+              title: "Competitive Rates",
+              description: "Affordable pricing with no hidden charges"
+            }
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={bounceVariants}
+              className="text-center p-6"
+            >
+              <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* CTA Section */}
+      <motion.div
+        ref={ctaRef}
+        initial={{ opacity: 0, y: 150 }}
+        animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 150 }}
+        transition={{
+          type: "spring",
+          bounce: 0.6,
+          duration: 1.2,
+          stiffness: 150,
+          damping: 8
+        }}
+        className="text-center py-16"
+      >
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8">Ready to Get Started?</h2>
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          href="/contact"
+          className="inline-block bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium text-lg"
+        >
+          Request a Quote Today →
+        </motion.a>
+      </motion.div>
+    </div>
+  )
+}

@@ -12,8 +12,8 @@ export function Logo() {
         </div>
       </div>
       <div className="flex flex-col">
-        <span className="text-xl font-bold text-gray-900">Chelford</span>
-        <span className="text-sm text-[#0891b2] font-medium">Mobile Services</span>
+        <span className="text-xl font-bold text-gray-900">CMS</span>
+        <span className="text-sm text-[#0891b2] font-medium">Toilet Hire</span>
       </div>
     </Link>
   )

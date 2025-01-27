@@ -2,25 +2,63 @@
 
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
-import { useTheme } from "./theme-provider"
+import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = React.useState(false)
+  const [showHighlight, setShowHighlight] = React.useState(false)
   const { theme, setTheme } = useTheme()
+
+  React.useEffect(() => {
+    setMounted(true)
+    // Check if user has seen the highlight before
+    const hasSeenHighlight = localStorage.getItem('hasSeenThemeHighlight')
+    if (!hasSeenHighlight) {
+      setShowHighlight(true)
+      // Hide highlight after 10 seconds
+      const timer = setTimeout(() => {
+        setShowHighlight(false)
+        localStorage.setItem('hasSeenThemeHighlight', 'true')
+      }, 10000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => {
+        setTheme(theme === "dark" ? "light" : "dark")
+        if (showHighlight) {
+          setShowHighlight(false)
+          localStorage.setItem('hasSeenThemeHighlight', 'true')
+        }
+      }}
       className={`
-        rounded-full p-2 transition-colors duration-200
-        hover:bg-[#0891b2]/10 hover:text-[#0891b2]
-        focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:ring-offset-2
-        ${theme === "dark" ? "text-white" : "text-yellow-500"}
+        relative h-10 w-10 rounded-lg
+        bg-background/90 backdrop-blur-sm
+        hover:bg-primary/10 hover:text-primary
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
+        transition-all duration-300 ease-in-out
+        transform hover:scale-105
+        ${theme === "dark" ? 'text-primary border border-primary/20' : 'text-primary/80 border border-primary/10'}
+        ${showHighlight ? 'ring-4 ring-[#00ffd5] animate-pulse' : ''}
       `}
       aria-label="Toggle theme"
     >
-      <Sun className={`h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0`} />
-      <Moon className={`absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100`} />
-      <span className="sr-only">Toggle theme</span>
+      <div className="relative h-5 w-5 mx-auto">
+        {theme === "dark" ? (
+          <Moon className="h-5 w-5" />
+        ) : (
+          <Sun className="h-5 w-5" />
+        )}
+      </div>
+      <span className="sr-only">
+        {theme === "dark" ? 'Switch to light theme' : 'Switch to dark theme'}
+      </span>
     </button>
   )
 }

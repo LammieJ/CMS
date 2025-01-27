@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  .mdx-content {
+    @apply prose prose-lg prose-slate max-w-4xl mx-auto;
+  }
+
+  .dark .mdx-content {
+    @apply prose-invert;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -33,29 +41,67 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 187 100% 37%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 187 100% 42%;
+    --primary-foreground: 222 47% 11%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 215.4 16.3% 56.9%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 187 100% 37%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 187 100% 42%;
   }
 }
 
-/* Dark mode text overrides */
-.dark .text-gray-700,
+/* Base styles */
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  article {
+    @apply max-w-4xl mx-auto leading-relaxed;
+  }
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .bg-white,
+.dark .bg-background,
+.dark [class*="bg-white"] {
+  background-color: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+
+.dark .bg-gray-50,
+.dark .bg-blue-50,
+.dark [class*="bg-gray-50"],
+.dark [class*="bg-blue-50"] {
+  background-color: hsl(var(--accent));
+}
+
 .dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: hsl(var(--foreground));
+}
+
+.dark .text-gray-400,
+.dark .text-gray-500 {
+  color: hsl(var(--muted-foreground));
+}
+
 .dark p,
 .dark li {
-  color: hsl(var(--primary)) !important;
-  opacity: 0.8;
+  color: hsl(var(--foreground));
 }
 
 .dark h1,
@@ -64,9 +110,26 @@
 .dark h4,
 .dark h5,
 .dark h6 {
-  color: hsl(var(--primary)) !important;
+  color: hsl(var(--foreground));
 }
 
+.dark .shadow-lg,
+.dark .shadow-md,
+.dark .shadow-sm {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+}
+
+.dark .border,
+.dark [class*="border"] {
+  border-color: hsl(var(--border));
+}
+
+.dark .hover\:bg-gray-50:hover,
+.dark .hover\:bg-gray-100:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* Animations */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -96,4 +159,130 @@
 
 .animation-delay-400 {
   animation-delay: 0.4s;
+}
+
+@layer components {
+  /* Blog post container styles */
+  .blog-container {
+    @apply max-w-4xl mx-auto px-4 py-8;
+  }
+
+  /* Blog post header styles */
+  .blog-header {
+    @apply mb-12;
+  }
+
+  .blog-title {
+    @apply text-4xl font-bold mb-4 leading-tight text-gray-900 dark:text-gray-100;
+  }
+
+  /* Blog grid layout */
+  .blog-grid {
+    @apply grid gap-8 md:grid-cols-2 lg:grid-cols-2;
+  }
+
+  /* Blog card styles */
+  .blog-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02];
+  }
+
+  .blog-card-image {
+    @apply relative aspect-[16/9] overflow-hidden;
+  }
+
+  .blog-card-content {
+    @apply p-6;
+  }
+
+  .blog-card-meta {
+    @apply flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3;
+  }
+
+  .blog-card-title {
+    @apply text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100 line-clamp-2;
+  }
+
+  .blog-card-excerpt {
+    @apply text-base text-gray-600 dark:text-gray-300 mb-6 line-clamp-4;
+  }
+
+  /* Tags styling */
+  .blog-card .flex.flex-wrap.gap-2 {
+    @apply mt-4;
+  }
+
+  .blog-card .flex.flex-wrap.gap-2 span {
+    @apply bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium transition-colors hover:bg-primary/20;
+  }
+
+  /* Blog post content styles */
+  .blog-content {
+    @apply prose lg:prose-xl prose-slate dark:prose-invert mx-auto;
+    @apply prose-headings:text-gray-900 dark:prose-headings:text-gray-50;
+    @apply prose-p:text-gray-600 dark:prose-p:text-gray-200;
+    @apply prose-a:text-primary hover:prose-a:text-primary/90;
+    @apply prose-strong:text-gray-900 dark:prose-strong:text-gray-50;
+    @apply prose-ul:list-disc prose-ul:ml-6;
+    @apply prose-ol:list-decimal prose-ol:ml-6;
+    @apply prose-li:text-gray-600 dark:prose-li:text-gray-200;
+    @apply prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-200;
+    @apply prose-blockquote:border-primary;
+    @apply prose-hr:border-gray-200 dark:prose-hr:border-gray-700;
+    @apply prose-code:text-gray-900 dark:prose-code:text-gray-50;
+    @apply prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800/50;
+    @apply prose-pre:text-gray-900 dark:prose-pre:text-gray-50;
+    @apply prose-img:rounded-lg;
+    @apply prose-img:shadow-md;
+    @apply max-w-4xl;
+    @apply prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl;
+    @apply prose-h1:font-bold prose-h2:font-semibold prose-h3:font-semibold;
+    @apply prose-h1:mb-8 prose-h2:mb-6 prose-h3:mb-4;
+  }
+
+  .mdx-content {
+    @apply prose lg:prose-xl prose-slate dark:prose-invert;
+  }
+
+  /* Table of contents */
+  .table-of-contents {
+    @apply sticky top-24 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg;
+  }
+
+  .table-of-contents-title {
+    @apply text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100;
+  }
+
+  .table-of-contents-list {
+    @apply space-y-2;
+  }
+
+  .table-of-contents-link {
+    @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-200;
+  }
+
+  /* Blog navigation */
+  .blog-nav {
+    @apply flex justify-between items-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-700;
+  }
+
+  .blog-nav-link {
+    @apply text-primary hover:text-primary/90 transition-colors duration-200;
+  }
+
+  /* Custom components */
+  .note {
+    @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg;
+  }
+
+  .warning {
+    @apply bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-6 mb-8 rounded-r-lg;
+  }
+
+  .tip {
+    @apply bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-6 mb-8 rounded-r-lg;
+  }
+
+  .important {
+    @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-8 rounded-r-lg;
+  }
 }

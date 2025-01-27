@@ -38,14 +38,14 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-secondary text-secondary-foreground pt-16 pb-8">
+    <footer className="bg-background text-foreground pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
             <Logo />
             <p className="text-muted-foreground dark:text-primary/80 mt-4">
-              Professional toilet hire services providing high-quality portable and luxury facilities across Chester and surrounding areas.
+              Professional toilet hire services providing high-quality portable and luxury facilities across Cheshire, Merseyside and Greater Manchester.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -121,7 +121,7 @@ export function Footer() {
               </li>
               <li className="flex items-center text-muted-foreground dark:text-primary/80">
                 <MapPin className="w-5 h-5 mr-3" />
-                <span>Chester, United Kingdom</span>
+                <span>Cheshire, United Kingdom</span>
               </li>
             </ul>
           </div>

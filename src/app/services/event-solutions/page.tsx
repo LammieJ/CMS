@@ -1,21 +1,30 @@
-import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
+import { serviceSchema, faqSchema } from './metadata'
 
-export const metadata: Metadata = {
-  title: 'Event Toilet Solutions | Festival & Large Event Facilities | Chelford Mobile Services',
-  description: 'Comprehensive toilet hire solutions for festivals, marathons, and large events. Custom configurations and professional event planning support.',
-  keywords: 'event toilets, festival toilet rental, party toilets, marathon facilities, event sanitation, large event toilets, outdoor event facilities',
-  openGraph: {
-    title: 'Event Toilet Solutions | Festival & Large Event Facilities',
-    description: 'Comprehensive toilet hire solutions for festivals, marathons, and large events.',
-    type: 'website',
-  }
+interface FAQ {
+  "@type": "Question";
+  name: string;
+  acceptedAnswer: {
+    "@type": "Answer";
+    text: string;
+  };
 }
 
 export default function EventSolutions() {
   return (
     <div className="container mx-auto px-4 py-12">
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <h1 className="text-4xl font-bold mb-8">Event-Specific Toilet Solutions</h1>
       
       <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -142,13 +151,28 @@ export default function EventSolutions() {
         </p>
       </div>
 
-      <div className="text-center">
+      <div className="bg-gray-50 p-8 rounded-lg mb-12">
+        <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {(faqSchema.mainEntity as FAQ[]).map((faq: FAQ, index: number) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-lg font-semibold mb-2">{faq.name}</h3>
+              <p className="dark:text-primary">{faq.acceptedAnswer.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="text-center space-y-6">
         <Link 
           href="/contact"
-          className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors text-lg font-semibold"
         >
           Plan Your Event
         </Link>
+        <p className="text-sm text-muted-foreground dark:text-primary/80">
+          Or call us on <a href="tel:07534362251" className="text-primary hover:underline">07534 362251</a> for event planning assistance
+        </p>
       </div>
     </div>
   )

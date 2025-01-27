@@ -116,43 +116,72 @@ Whether you're planning a wedding in ${areas[0]}, managing a construction projec
   }
 
   try {
-    const locationPrompt = `Generate unique, location-specific content for toilet hire services in ${name}, a ${type || 'local area'}${features ? ' known for ' + features.join(', ') : ''}. Consider the following aspects:
+    const locationPrompt = `Generate comprehensive, SEO-optimized content for toilet hire services in ${name}. Include specific details about the location and surrounding areas: ${areas.join(', ')}. Consider:
 
-1. Local characteristics:
-- Type: ${type || 'Not specified'}
-- Notable features: ${features ? features.join(', ') : 'Not specified'}
-- Common events and activities in this area
-- Local business and development needs
+1. Local Market Analysis:
+- Demographics and business landscape
+- Major events and venues in ${name}
+- Construction and development activity
+- Tourism and hospitality sector
+- Seasonal events and requirements
+- Local regulations and compliance needs
 
-2. Area-specific requirements:
-- Events and venues typical to ${name}
+2. Service Requirements:
+- Event types common to ${name} (festivals, weddings, corporate)
 - Construction and development projects
-- Business and commercial needs
-- Tourism and visitor facilities
-- Seasonal considerations
+- Industrial and commercial needs
+- Agricultural and rural requirements
+- Emergency and temporary facilities
 
-3. Local context:
-- Areas served: ${areas.join(', ')}
-- Local landmarks and venues
-- Specific challenges or requirements
-- Regional events and activities
+3. Competitive Advantages:
+- Local presence and rapid response
+- Understanding of ${name}'s specific needs
+- Knowledge of local venues and requirements
+- Relationships with local businesses
+- Area-specific service adaptations
 
-Format the response as JSON with this structure:
+4. Location-Specific Details:
+- Geographic coverage and accessibility
+- Local transport links and logistics
+- Weather considerations
+- Peak demand periods
+- Local authority requirements
+
+Format the response as JSON with this enhanced structure:
 {
   "title": "Location-specific SEO title (50-60 chars)",
   "metaDescription": "Unique meta description highlighting local relevance (150-160 chars)",
-  "keywords": ["array", "of", "location-specific", "keywords"],
+  "keywords": ["array", "of", "20", "location-specific", "keywords"],
   "h1": "Location-optimized main heading",
-  "h2s": ["array", "of", "relevant", "subheadings"],
-  "content": "Detailed, unique content that specifically addresses the local area's needs and characteristics",
+  "h2s": ["array", "of", "5-7", "relevant", "subheadings"],
+  "content": "Detailed, unique content (minimum 500 words)",
   "schema": {
     "name": "Business name with location",
     "description": "Location-specific business description",
     "areaServed": {
       "name": "Location name",
-      "containsPlace": ["array", "of", "areas", "served"]
+      "containsPlace": ["array", "of", "areas", "served"],
+      "geoCoordinates": {
+        "latitude": "location latitude",
+        "longitude": "location longitude"
+      }
     },
-    "services": ["array", "of", "relevant", "services"]
+    "services": ["array", "of", "relevant", "services"],
+    "events": ["array", "of", "local", "events"],
+    "facilities": ["array", "of", "available", "facilities"],
+    "specialFeatures": ["array", "of", "location-specific", "features"],
+    "localBusinessHours": "24/7",
+    "priceRange": "££-£££",
+    "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
+    "areaSpecialties": ["array", "of", "location-specific", "specialties"]
+  },
+  "faqSchema": {
+    "questions": [
+      {
+        "question": "Location-specific FAQ question",
+        "answer": "Detailed answer"
+      }
+    ]
   }
 }`
 
@@ -168,7 +197,10 @@ Format the response as JSON with this structure:
           content: locationPrompt
         }
       ],
-      temperature: 0.8 // Increase creativity for more unique content
+      temperature: 0.7, // Balance between creativity and consistency
+      max_tokens: 2000, // Allow for longer, more detailed responses
+      presence_penalty: 0.6, // Encourage inclusion of unique details
+      frequency_penalty: 0.4 // Reduce repetition
     })
 
     const content = completion.choices[0]?.message?.content
