@@ -47,6 +47,7 @@ export default function LuxuryToiletHire() {
             src="/images/luxury-toilet.svg"
             alt="Luxury toilet trailer interior"
             fill
+            priority
             className="object-cover"
           />
         </div>
@@ -143,7 +144,7 @@ export default function LuxuryToiletHire() {
       <div className="bg-gray-50 p-8 rounded-lg mb-12">
         <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
         <div className="space-y-6">
-          {(faqSchema.mainEntity as FAQ[]).map((faq: FAQ, index: number) => (
+          {([...faqSchema.mainEntity] as FAQ[]).map((faq: FAQ, index: number) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-semibold mb-2">{faq.name}</h3>
               <p className="dark:text-primary">{faq.acceptedAnswer.text}</p>
