@@ -229,9 +229,9 @@ export function Header() {
           ref={menuRef}
           id="mobile-menu"
           className={cn(
-            "fixed inset-x-0 top-[65px] bottom-0 z-[60] bg-background lg:hidden",
+            "fixed inset-x-0 top-[65px] bottom-0 z-[100] bg-background lg:hidden",
             "transition-all duration-300 ease-in-out transform border-t",
-            isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            isOpen ? "translate-x-0 opacity-100 pointer-events-auto" : "translate-x-full opacity-0 pointer-events-none"
           )}
         >
           <nav className="h-full overflow-y-auto px-4 py-6 space-y-4 relative">
