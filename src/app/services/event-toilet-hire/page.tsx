@@ -105,6 +105,7 @@ export default function EventToiletHirePage() {
             src="/images/event-toilets.svg"
             alt="Professional Event Toilet Facilities"
             fill
+            priority
             className="object-cover"
           />
         </div>
