@@ -229,21 +229,17 @@ export function Header() {
           ref={menuRef}
           id="mobile-menu"
           className={cn(
-            "fixed inset-x-0 top-[65px] bottom-0 z-[100] bg-background lg:hidden",
-            "transition-all duration-300 ease-in-out transform border-t",
-            isOpen ? "translate-x-0 opacity-100 pointer-events-auto" : "translate-x-full opacity-0 pointer-events-none"
+            "fixed inset-x-0 top-[65px] bottom-0 z-[9999] bg-background lg:hidden overflow-y-auto",
+            isOpen ? "block" : "hidden"
           )}
         >
-          <nav className="h-full overflow-y-auto px-4 py-6 space-y-4 relative">
+          <nav className="h-full px-4 py-6 space-y-4">
             {menuItems.map((item, index) => (
               <div key={item.href}>
                 {item.subItems ? (
                   <>
                     <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setActiveDropdown(prev => prev === item.href ? null : item.href);
-                      }}
+                      onClick={() => setActiveDropdown(prev => prev === item.href ? null : item.href)}
                       className={cn(
                         "flex w-full items-center justify-between text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
                         "py-4 px-6 rounded-lg hover:bg-primary/5",
@@ -263,9 +259,7 @@ export function Header() {
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            onClick={() => {
-                              setTimeout(closeMenu, 100);
-                            }}
+                            onClick={closeMenu}
                             className="block w-full text-left py-3 px-6 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg"
                           >
                             {subItem.label}
@@ -277,9 +271,7 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    onClick={() => {
-                      setTimeout(closeMenu, 100);
-                    }}
+                    onClick={closeMenu}
                     className={cn(
                       "block w-full text-left text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
                       "py-2 px-4 rounded-lg hover:bg-primary/5",
