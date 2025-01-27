@@ -242,7 +242,7 @@ export function Header() {
                       onClick={() => setActiveDropdown(prev => prev === item.href ? null : item.href)}
                       className={cn(
                         "flex w-full items-center justify-between text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
-                        "py-4 px-6 rounded-lg hover:bg-primary/5",
+                        "py-6 px-8 rounded-lg hover:bg-primary/5",
                         "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                         activeDropdown === item.href && "text-primary bg-primary/5"
                       )}
@@ -260,7 +260,7 @@ export function Header() {
                             key={subItem.href}
                             href={subItem.href}
                             onClick={closeMenu}
-                            className="block w-full text-left py-3 px-6 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg"
+                            className="block w-full text-left py-5 px-8 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg"
                           >
                             {subItem.label}
                           </Link>
@@ -274,7 +274,7 @@ export function Header() {
                     onClick={closeMenu}
                     className={cn(
                       "block w-full text-left text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
-                      "py-2 px-4 rounded-lg hover:bg-primary/5",
+                      "py-6 px-8 rounded-lg hover:bg-primary/5",
                       "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
                       pathname === item.href && "text-primary"
                     )}
