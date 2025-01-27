@@ -263,7 +263,9 @@ export function Header() {
                           <Link
                             key={subItem.href}
                             href={subItem.href}
-                            onClick={closeMenu}
+                            onClick={() => {
+                              setTimeout(closeMenu, 100);
+                            }}
                             className="block w-full text-left py-3 px-6 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg"
                           >
                             {subItem.label}
@@ -275,7 +277,9 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    onClick={closeMenu}
+                    onClick={() => {
+                      setTimeout(closeMenu, 100);
+                    }}
                     className={cn(
                       "block w-full text-left text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
                       "py-2 px-4 rounded-lg hover:bg-primary/5",
