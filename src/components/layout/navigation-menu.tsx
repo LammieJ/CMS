@@ -56,28 +56,16 @@ export function Header() {
   const [showContact, setShowContact] = React.useState(true);
   const pathname = usePathname();
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const dropdownRefs = React.useRef<{ [key: string]: HTMLElement | null }>({});
+
+  const closeMenu = React.useCallback(() => {
+    setIsOpen(false);
+    setActiveDropdown(null);
+    document.body.style.overflow = "unset";
+  }, []);
 
   React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const clickedDropdown = Object.entries(dropdownRefs.current).find(([_, ref]) => 
-        ref && ref.contains(event.target as Node)
-      );
-      
-      if (!clickedDropdown) {
-        setActiveDropdown(null);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  const setDropdownRef = React.useCallback((element: HTMLDivElement | null, href: string) => {
-    dropdownRefs.current[href] = element;
-  }, []);
+    closeMenu();
+  }, [pathname, closeMenu]);
 
   const toggleMenu = React.useCallback(() => {
     setIsOpen((prev) => {
@@ -87,11 +75,18 @@ export function Header() {
     });
   }, []);
 
-  const closeMenu = React.useCallback(() => {
-    setIsOpen(false);
-    setActiveDropdown(null);
-    document.body.style.overflow = "unset";
-  }, []);
+  const MobileMenuItem = React.useCallback(({ href, label }: { href: string; label: string }) => (
+    <Link
+      href={href}
+      onClick={closeMenu}
+      className={cn(
+        "block w-full text-left py-5 px-8 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg",
+        pathname === href && "text-primary"
+      )}
+    >
+      {label}
+    </Link>
+  ), [closeMenu, pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
@@ -110,12 +105,9 @@ export function Header() {
                     className="relative group"
                   >
                     {item.subItems ? (
-                      <div className="relative" ref={(el) => setDropdownRef(el, item.href)}>
+                      <div className="relative">
                         <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveDropdown(activeDropdown === item.href ? null : item.href);
-                          }}
+                          onClick={() => setActiveDropdown(activeDropdown === item.href ? null : item.href)}
                           className={cn(
                             "inline-flex items-center text-sm font-medium text-foreground hover:text-primary transition-colors",
                             "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-3 py-2",
@@ -234,7 +226,7 @@ export function Header() {
           )}
         >
           <nav className="h-full px-4 py-6 space-y-4">
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <div key={item.href}>
                 {item.subItems ? (
                   <>
@@ -256,31 +248,13 @@ export function Header() {
                     {activeDropdown === item.href && (
                       <div className="pl-4 mt-2 space-y-2">
                         {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            onClick={closeMenu}
-                            className="block w-full text-left py-5 px-8 text-sm text-foreground hover:text-primary hover:bg-primary/5 rounded-lg"
-                          >
-                            {subItem.label}
-                          </Link>
+                          <MobileMenuItem key={subItem.href} {...subItem} />
                         ))}
                       </div>
                     )}
                   </>
                 ) : (
-                  <Link
-                    href={item.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      "block w-full text-left text-lg font-medium text-foreground hover:text-primary transition-all duration-200",
-                      "py-6 px-8 rounded-lg hover:bg-primary/5",
-                      "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-                      pathname === item.href && "text-primary"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
+                  <MobileMenuItem {...item} />
                 )}
               </div>
             ))}
