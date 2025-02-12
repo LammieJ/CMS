@@ -12,16 +12,12 @@ declare global {
   }
 }
 
-function gtag(command: string, ...args: unknown[]): void {
-  window.dataLayer.push(args)
-}
-
 export default function GoogleAnalytics() {
   useEffect(() => {
     try {
       window.dataLayer = window.dataLayer || []
-      gtag('js', new Date())
-      gtag('config', GA_MEASUREMENT_ID, {
+      window.gtag('js', new Date())
+      window.gtag('config', GA_MEASUREMENT_ID, {
         page_path: window.location.pathname,
         transport_url: 'https://region1.google-analytics.com',
         send_page_view: true

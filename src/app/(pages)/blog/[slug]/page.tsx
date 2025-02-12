@@ -3,13 +3,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug } from '@/lib/blog'
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
-import {
-  generatePostSchema,
-  generateBreadcrumbSchema,
-  generateSocialShareSchema,
-  generateRelatedContentSchema
-} from './metadata'
 
 function formatDate(dateString: string) {
   try {
@@ -37,33 +30,8 @@ export default async function BlogPostPage({ params }: Props) {
     notFound()
   }
 
-  const postSchema = generatePostSchema(post)
-  const breadcrumbSchema = generateBreadcrumbSchema(post)
-  const socialShareSchema = generateSocialShareSchema(post)
-  const relatedContentSchema = generateRelatedContentSchema([post]) // Pass as array
-
   return (
     <div className="container mx-auto px-4 py-16">
-      <Script
-        id="post-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
-      />
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="social-share-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(socialShareSchema) }}
-      />
-      <Script
-        id="related-content-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(relatedContentSchema) }}
-      />
       <article className="blog-content mdx-content" itemScope itemType="https://schema.org/BlogPosting">
         <meta itemProp="headline" content={post.title} />
         <meta itemProp="description" content={post.description} />
