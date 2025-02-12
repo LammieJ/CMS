@@ -18,7 +18,12 @@ export const metadata: Metadata = {
     'construction site facilities',
     'accessible toilet hire',
     'temporary toilet facilities',
-    'mobile toilet services'
+    'mobile toilet services',
+    'toilet hire Cheshire',
+    'portable toilet hire Manchester',
+    'event facilities hire',
+    'construction site sanitation',
+    'outdoor event facilities'
   ],
   authors: [{ name: 'Chelford Mobile Services' }],
   creator: 'Chelford Mobile Services',
@@ -71,7 +76,6 @@ export const metadata: Metadata = {
   }
 }
 
-// Additional schema markup for better search visibility
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -86,15 +90,30 @@ export const websiteSchema = {
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   "name": "Chelford Mobile Services",
   "url": "https://chelfordmobileservices.co.uk",
   "logo": "https://chelfordmobileservices.co.uk/images/logo.svg",
+  "image": "https://chelfordmobileservices.co.uk/images/cmstoilethire.jpg",
   "description": "Professional portable toilet hire services for events, construction sites, and special occasions across Cheshire and surrounding areas.",
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "Cheshire",
-    "addressCountry": "GB"
+    "addressCountry": "GB",
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.2707,
+        "longitude": -2.6963
+      },
+      "geoRadius": "40mi"
+    }
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 53.2707,
+    "longitude": -2.6963
   },
   "contactPoint": [
     {
@@ -102,7 +121,21 @@ export const organizationSchema = {
       "telephone": "07534362251",
       "contactType": "customer service",
       "areaServed": "GB-CHE",
-      "availableLanguage": "English"
+      "availableLanguage": "English",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
     },
     {
       "@type": "ContactPoint",
@@ -110,7 +143,21 @@ export const organizationSchema = {
       "contactType": "emergency",
       "areaServed": "GB-CHE",
       "availableLanguage": "English",
-      "contactOption": "HearingImpairedSupported"
+      "contactOption": "HearingImpairedSupported",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
     }
   ],
   "sameAs": [
@@ -123,6 +170,21 @@ export const organizationSchema = {
     "Environmental Agency Approved",
     "HSE Compliant"
   ],
+  "priceRange": "££",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Toilet Hire Services",
@@ -132,7 +194,16 @@ export const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Standard Portable Toilets",
-          "description": "High-quality standard portable toilets suitable for various events and sites"
+          "description": "High-quality standard portable toilets suitable for various events and sites",
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 53.2707,
+              "longitude": -2.6963
+            },
+            "geoRadius": "40mi"
+          }
         }
       },
       {
@@ -140,7 +211,16 @@ export const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Luxury Toilet Units",
-          "description": "Premium luxury toilet trailers perfect for weddings and corporate events"
+          "description": "Premium luxury toilet trailers perfect for weddings and corporate events",
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 53.2707,
+              "longitude": -2.6963
+            },
+            "geoRadius": "40mi"
+          }
         }
       },
       {
@@ -148,9 +228,66 @@ export const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Event Solutions",
-          "description": "Complete toilet hire solutions for events of all sizes"
+          "description": "Complete toilet hire solutions for events of all sizes",
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 53.2707,
+              "longitude": -2.6963
+            },
+            "geoRadius": "40mi"
+          }
         }
       }
     ]
+  }
+}
+
+export const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Chelford Mobile Services",
+  "image": "https://chelfordmobileservices.co.uk/images/cmstoilethire.jpg",
+  "@id": "https://chelfordmobileservices.co.uk",
+  "url": "https://chelfordmobileservices.co.uk",
+  "telephone": "07534362251",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Cheshire",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 53.2707,
+    "longitude": -2.6963
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://www.facebook.com/chelfordmobileservices",
+    "https://twitter.com/chelfordmobile",
+    "https://www.linkedin.com/company/chelford-mobile-services"
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 53.2707,
+      "longitude": -2.6963
+    },
+    "geoRadius": "40mi"
   }
 }

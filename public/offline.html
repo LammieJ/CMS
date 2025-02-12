@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - CMS Toilet Hire</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #0891b2;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0891b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #0e7490;
+        }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📡</div>
+        <h1>You're Offline</h1>
+        <p>Sorry, it looks like you've lost your internet connection. The page you're trying to view is not currently cached for offline viewing.</p>
+        <p>Please check your internet connection and try again.</p>
+        <a href="/" class="button">Try Again</a>
+    </div>
+    <script>
+        // Check for online status and redirect if online
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

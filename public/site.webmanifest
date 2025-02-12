@@ -1,21 +1,52 @@
 {
-  "name": "Chelford Mobile Services",
-  "short_name": "CMS",
-  "description": "Professional toilet hire services offering portable, luxury, and event-specific solutions.",
+  "name": "CMS Toilet Hire",
+  "short_name": "CMS Hire",
+  "description": "Professional toilet hire services for events, construction sites, and special occasions",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#020817",
   "theme_color": "#0891b2",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Get Quote",
+      "short_name": "Quote",
+      "description": "Request a quote for toilet hire",
+      "url": "/contact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Calculator",
+      "short_name": "Calculate",
+      "description": "Calculate your toilet hire needs",
+      "url": "/calculator",
+      "icons": [{ "src": "/favicon.svg", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["business", "utilities", "services"],
+  "dir": "ltr",
+  "lang": "en-GB",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/",
+  "screenshots": [],
+  "features": [
+    "Cross Platform",
+    "Offline Support",
+    "Responsive Design",
+    "Fast Performance"
   ]
 }
