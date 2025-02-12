@@ -1,14 +1,13 @@
 "use client"
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export function Logo() {
   return (
     <Link href="/" className="flex items-center">
       <motion.div
-        className="relative w-[120px] h-[42px] sm:w-[160px] sm:h-[56px]"
+        className="relative flex items-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ 
           opacity: 1, 
@@ -36,14 +35,8 @@ export function Logo() {
         }}
         whileTap={{ scale: 0.95 }}
       >
-        <Image
-          src="/images/logo1.png"
-          alt="CMS Toilet Hire Logo"
-          fill
-          sizes="(max-width: 640px) 120px, 160px"
-          priority
-          className="object-contain"
-        />
+        <span className="text-2xl font-bold text-primary">CMS</span>
+        <span className="ml-2 text-lg font-medium text-foreground">Toilet Hire</span>
       </motion.div>
     </Link>
   )

@@ -6,8 +6,10 @@ import { useRef, useState, useEffect } from "react"
 
 export function HomeContent() {
   const [location, setLocation] = useState<string | null>(null)
-  const imageRef = useRef(null)
-  
+  const servicesRef = useRef(null)
+  const featuresRef = useRef(null)
+  const ctaRef = useRef(null)
+
   useEffect(() => {
     fetch('/api/ip')
       .then(res => res.json())
@@ -19,11 +21,6 @@ export function HomeContent() {
       .catch(() => console.error('Error fetching location'))
   }, [])
 
-  const servicesRef = useRef(null)
-  const featuresRef = useRef(null)
-  const ctaRef = useRef(null)
-
-  const imageInView = useInView(imageRef, { once: true, margin: "-20%" })
   const servicesInView = useInView(servicesRef, { once: true, margin: "-20%" })
   const featuresInView = useInView(featuresRef, { once: true, margin: "-20%" })
   const ctaInView = useInView(ctaRef, { once: true, margin: "-20%" })
@@ -134,29 +131,6 @@ export function HomeContent() {
           >
             Learn More →
           </motion.a>
-        </motion.div>
-        <motion.div
-          ref={imageRef}
-          initial={{ opacity: 0, y: 150 }}
-          animate={imageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 150 }}
-          transition={{
-            type: "spring",
-            bounce: 0.6,
-            duration: 1.2,
-            stiffness: 150,
-            damping: 8
-          }}
-          className="relative w-full max-w-4xl mx-auto aspect-[16/9] rounded-lg overflow-hidden"
-        >
-          <Image
-            src="/images/cmstoilethire.jpg"
-            alt="CMS Toilet Hire Services"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
-            priority
-            quality={85}
-            className="object-cover"
-          />
         </motion.div>
       </motion.div>
 
