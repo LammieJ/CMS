@@ -10,7 +10,10 @@ import { ServiceWorkerRegistration } from '../components/ServiceWorkerRegistrati
 import Script from 'next/script'
 import { websiteSchema, organizationSchema, localBusinessSchema } from './metadata'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -61,7 +64,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/logo.svg', sizes: '48x48 72x72 96x96 128x128 180x180 256x256', type: 'image/svg+xml' }
+      { url: '/icons/icon-72x72.png', sizes: '72x72', type: 'image/png' },
+      { url: '/icons/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icons/icon-128x128.png', sizes: '128x128', type: 'image/png' },
+      { url: '/icons/icon-144x144.png', sizes: '144x144', type: 'image/png' },
+      { url: '/icons/icon-152x152.png', sizes: '152x152', type: 'image/png' },
+      { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/icon-384x384.png', sizes: '384x384', type: 'image/png' },
+      { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ]
   },
   manifest: '/site.webmanifest',
@@ -109,9 +122,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth" amp={process.env.NODE_ENV === 'production' ? '' : undefined}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/logo.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" href="/icons/icon-72x72.png" type="image/png" sizes="72x72" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="geo.region" content="GB-CHE" />
         <meta name="geo.placename" content="Chester" />
@@ -131,10 +145,8 @@ export default function RootLayout({
               ]
             })
           }}
+          strategy="afterInteractive"
         />
-        {process.env.NODE_ENV === 'production' && (
-          <style amp-boilerplate>{`body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}`}</style>
-        )}
       </head>
       <body className={`${inter.className} bg-background text-foreground min-h-screen`}>
         <ThemeProvider>

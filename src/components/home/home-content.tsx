@@ -152,8 +152,10 @@ export function HomeContent() {
             src="/images/cmstoilethire.jpg"
             alt="CMS Toilet Hire Services"
             fill
-            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1024px"
             priority
+            quality={85}
+            className="object-cover"
           />
         </motion.div>
       </motion.div>
@@ -194,6 +196,7 @@ export function HomeContent() {
               width={64}
               height={64}
               className="mb-4"
+              loading="lazy"
             />
             <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
             <p className="text-muted-foreground">{service.description}</p>
