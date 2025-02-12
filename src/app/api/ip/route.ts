@@ -1,29 +1,31 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
-export async function GET(request: Request) {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded ? forwarded.split(',')[0] : request.headers.get('x-real-ip');
-  
-  // For local development or when IP is not available
-  if (ip === '1' || ip === '::1' || !ip) {
-    return NextResponse.json({
-      ip: ip,
-      location: 'Manchester, United Kingdom'
-    });
-  }
-  
+interface IpResponse {
+  ip: string
+  location?: string
+}
+
+export async function GET() {
   try {
-    const response = await fetch(`https://ip-api.com/json/${ip}`);
-    const data = await response.json();
+    const response = await fetch('https://api.ipify.org?format=json')
+    const data = await response.json()
+    const ip = data.ip
+
+    // Get location from IP
+    const geoResponse = await fetch(`https://ipapi.co/${ip}/json/`)
+    const geoData = await geoResponse.json()
     
-    return NextResponse.json({
-      ip: ip,
-      location: data.city ? `${data.city}, ${data.country}` : 'Manchester, United Kingdom'
-    });
-  } catch (error) {
-    return NextResponse.json({
-      ip: ip,
-      location: 'Manchester, United Kingdom'
-    });
+    const location = geoData.error ? undefined : `${geoData.city}, ${geoData.region}`
+
+    const result: IpResponse = {
+      ip,
+      location
+    }
+
+    return NextResponse.json(result)
+  } catch {
+    // Log error internally but don't expose details to client
+    console.error('Failed to fetch IP or location data')
+    return NextResponse.json({ ip: 'Unknown', location: undefined })
   }
 }

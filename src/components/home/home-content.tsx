@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
 
@@ -16,7 +16,7 @@ export function HomeContent() {
           setLocation(data.location.split(',')[0]) // Just get the city name
         }
       })
-      .catch(err => console.error('Error fetching location:', err))
+      .catch(() => console.error('Error fetching location'))
   }, [])
 
   const servicesRef = useRef(null)
@@ -182,9 +182,9 @@ export function HomeContent() {
             title: "Event Solutions",
             description: "Complete sanitation solutions for festivals and large-scale events."
           }
-        ].map((service, index) => (
+        ].map((service, i) => (
           <motion.div
-            key={index}
+            key={i}
             variants={bounceVariants}
             className="p-6 rounded-lg border border-primary/20 backdrop-blur-sm"
           >
@@ -228,9 +228,9 @@ export function HomeContent() {
               title: "Competitive Rates",
               description: "Affordable pricing with no hidden charges"
             }
-          ].map((feature, index) => (
+          ].map((feature, i) => (
             <motion.div
-              key={index}
+              key={i}
               variants={bounceVariants}
               className="text-center p-6"
             >

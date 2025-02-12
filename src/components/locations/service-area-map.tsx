@@ -1,150 +1,144 @@
-'use client';
+"use client"
 
-import { useEffect, useRef, useState } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
-import { LocationData } from '@/app/(pages)/locations/location-data';
-import { MapPin } from 'lucide-react';
+import { useEffect, useRef } from 'react'
+import { Loader } from '@googlemaps/js-api-loader'
 
 interface ServiceAreaMapProps {
-  locations: LocationData[];
-  apiKey: string;
-  center?: { lat: number; lng: number };
-  zoom?: number;
+  center: {
+    lat: number
+    lng: number
+  }
+  radius: number // in miles
 }
 
-export default function ServiceAreaMap({ 
-  locations,
-  apiKey,
-  center = { lat: 53.1937, lng: -2.8937 }, // Chester coordinates as default center
-  zoom = 9
-}: ServiceAreaMapProps) {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export function ServiceAreaMap({ center, radius }: ServiceAreaMapProps) {
+  const mapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!apiKey) {
-      setError('Map visualization coming soon');
-      return;
-    }
+    const initMap = async () => {
+      const loader = new Loader({
+        apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+        version: 'weekly',
+        libraries: ['places', 'geometry']
+      })
 
-    const loader = new Loader({
-      apiKey,
-      version: 'weekly',
-      libraries: ['places', 'geometry']
-    });
+      try {
+        const google = await loader.load()
+        
+        if (!mapRef.current) return
 
-    loader.load().then(() => {
-      if (mapRef.current && !map) {
-        const mapInstance = new google.maps.Map(mapRef.current, {
+        const map = new google.maps.Map(mapRef.current, {
           center,
-          zoom,
+          zoom: 9,
           styles: [
-            {
-              featureType: 'all',
-              elementType: 'geometry',
-              stylers: [{ color: '#242f3e' }]
-            },
-            {
-              featureType: 'all',
-              elementType: 'labels.text.stroke',
-              stylers: [{ color: '#242f3e' }]
-            },
-            {
-              featureType: 'all',
-              elementType: 'labels.text.fill',
-              stylers: [{ color: '#746855' }]
-            },
             {
               featureType: 'water',
               elementType: 'geometry',
-              stylers: [{ color: '#17263c' }]
+              stylers: [{ color: '#e9e9e9' }, { lightness: 17 }]
+            },
+            {
+              featureType: 'landscape',
+              elementType: 'geometry',
+              stylers: [{ color: '#f5f5f5' }, { lightness: 20 }]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.fill',
+              stylers: [{ color: '#ffffff' }, { lightness: 17 }]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{ color: '#ffffff' }, { lightness: 29 }, { weight: 0.2 }]
+            },
+            {
+              featureType: 'road.arterial',
+              elementType: 'geometry',
+              stylers: [{ color: '#ffffff' }, { lightness: 18 }]
+            },
+            {
+              featureType: 'road.local',
+              elementType: 'geometry',
+              stylers: [{ color: '#ffffff' }, { lightness: 16 }]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'geometry',
+              stylers: [{ color: '#f5f5f5' }, { lightness: 21 }]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{ color: '#dedede' }, { lightness: 21 }]
+            },
+            {
+              elementType: 'labels.text.stroke',
+              stylers: [{ visibility: 'on' }, { color: '#ffffff' }, { lightness: 16 }]
+            },
+            {
+              elementType: 'labels.text.fill',
+              stylers: [{ saturation: 36 }, { color: '#333333' }, { lightness: 40 }]
+            },
+            {
+              elementType: 'labels.icon',
+              stylers: [{ visibility: 'off' }]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{ color: '#f2f2f2' }, { lightness: 19 }]
+            },
+            {
+              featureType: 'administrative',
+              elementType: 'geometry.fill',
+              stylers: [{ color: '#fefefe' }, { lightness: 20 }]
+            },
+            {
+              featureType: 'administrative',
+              elementType: 'geometry.stroke',
+              stylers: [{ color: '#fefefe' }, { lightness: 17 }, { weight: 1.2 }]
             }
-          ],
-          disableDefaultUI: true,
-          zoomControl: true
-        });
+          ]
+        })
 
-        // Create a circle representing the service radius
-        const serviceCircle = new google.maps.Circle({
-          strokeColor: '#0891b2',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
+        // Add marker for center point
+        new google.maps.Marker({
+          position: center,
+          map,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: '#0891b2',
+            fillOpacity: 1,
+            strokeColor: '#ffffff',
+            strokeWeight: 2
+          }
+        })
+
+        // Add service area circle
+        new google.maps.Circle({
+          map,
+          center,
+          radius: radius * 1609.34, // Convert miles to meters
           fillColor: '#0891b2',
           fillOpacity: 0.1,
-          map: mapInstance,
-          center: center,
-          radius: 64374 // 40 miles in meters
-        });
+          strokeColor: '#0891b2',
+          strokeOpacity: 0.8,
+          strokeWeight: 2
+        })
 
-        // Add markers for each location
-        locations.forEach(location => {
-          // Use Geocoding service to get coordinates
-          const geocoder = new google.maps.Geocoder();
-          geocoder.geocode(
-            { address: `${location.name}, UK` },
-            (results: google.maps.GeocoderResult[] | null, status: google.maps.GeocoderStatus) => {
-              if (status === 'OK' && results && results[0]) {
-                const marker = new google.maps.Marker({
-                  position: results[0].geometry.location,
-                  map: mapInstance,
-                  title: location.name,
-                  icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 8,
-                    fillColor: '#0891b2',
-                    fillOpacity: 1,
-                    strokeColor: '#ffffff',
-                    strokeWeight: 2,
-                  }
-                });
-
-                // Add click listener to marker
-                marker.addListener('click', () => {
-                  const infoWindow = new google.maps.InfoWindow({
-                    content: `
-                      <div class="p-2">
-                        <h3 class="font-semibold text-lg">${location.name}</h3>
-                        <p class="text-sm mt-1">Portable Toilet Hire Services</p>
-                        <div class="mt-2">
-                          <a href="/locations/${location.slug}" 
-                             class="text-[#0891b2] hover:underline text-sm">
-                            View Details
-                          </a>
-                        </div>
-                      </div>
-                    `
-                  });
-                  infoWindow.open(mapInstance, marker);
-                });
-              }
-            }
-          );
-        });
-
-        setMap(mapInstance);
+      } catch (error) {
+        console.error('Error loading Google Maps:', error)
       }
-    }).catch(err => {
-      setError('Error loading map');
-      console.error('Error loading Google Maps:', err);
-    });
-  }, [apiKey, center, locations, map, zoom]);
+    }
 
-  if (error) {
-    return (
-      <div className="w-full h-[500px] rounded-lg border border-border bg-card">
-        <div className="h-full flex flex-col items-center justify-center text-muted-foreground">
-          <MapPin className="w-12 h-12 mb-4 text-primary" />
-          <p className="text-lg font-medium">{error}</p>
-          <p className="mt-2">Serving Cheshire, Merseyside and Greater Manchester</p>
-        </div>
-      </div>
-    );
-  }
+    initMap()
+  }, [center, radius])
 
   return (
-    <div className="w-full h-[500px] rounded-lg overflow-hidden border border-border">
-      <div ref={mapRef} className="w-full h-full" />
-    </div>
-  );
+    <div 
+      ref={mapRef} 
+      className="w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg"
+    />
+  )
 }
