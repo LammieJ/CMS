@@ -1,73 +1,70 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge'
+
+interface CalculatorInput {
+  guests: number;
+  duration: number;
+  type: string;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const {
-      attendees,
-      femalePercent,
-      malePercent,
-      disabledPercent,
-      duration,
-      alcohol,
-      food,
-      servicingInterval,
-      buffer,
-    } = await request.json();
+    const { guests, duration, type } = await request.json() as CalculatorInput;
 
-    console.log('Received calculation request:', {
-      attendees,
-      femalePercent,
-      malePercent,
-      disabledPercent,
+    if (!guests || !duration || !type) {
+      return NextResponse.json(
+        { error: 'Missing required parameters' },
+        { status: 400 }
+      );
+    }
+
+    // Base calculations
+    let toilets = Math.ceil(guests / 100); // 1 toilet per 100 guests base ratio
+    
+    // Adjust for duration
+    if (duration > 4) {
+      toilets = Math.ceil(toilets * 1.25); // 25% more for events over 4 hours
+    }
+    if (duration > 8) {
+      toilets = Math.ceil(toilets * 1.5); // 50% more for events over 8 hours
+    }
+
+    // Adjust for type
+    let price = 0;
+    switch (type.toLowerCase()) {
+      case 'standard':
+        price = toilets * 75; // £75 per standard unit
+        break;
+      case 'luxury':
+        toilets = Math.ceil(toilets * 0.75); // Luxury units have higher capacity
+        price = toilets * 250; // £250 per luxury unit
+        break;
+      case 'disabled':
+        toilets = Math.max(1, Math.ceil(guests / 500)); // 1 disabled toilet per 500 guests
+        price = toilets * 100; // £100 per disabled unit
+        break;
+      default:
+        return NextResponse.json(
+          { error: 'Invalid toilet type' },
+          { status: 400 }
+        );
+    }
+
+    // Add service charge
+    price += toilets * 25; // £25 service charge per unit
+
+    return NextResponse.json({
+      toilets,
+      price,
       duration,
-      alcohol,
-      food,
-      servicingInterval,
-      buffer,
+      guests,
+      type
     });
-
-    const femaleAttendees = (attendees * femalePercent) / 100;
-    const maleAttendees = (attendees * malePercent) / 100;
-    const disabledAttendees = (attendees * disabledPercent) / 100;
-
-    // Toilet ratios
-    const femaleRatio = duration < 6 ? 100 : alcohol || food ? 75 : 85;
-    const maleRatio = duration < 6 ? 500 : alcohol || food ? 400 : 425;
-    const maleUrinalRatio = duration < 6 ? 150 : alcohol || food ? 100 : 125;
-
-    const totalFemaleToilets = Math.ceil(femaleAttendees / femaleRatio);
-    const totalMaleToilets = Math.ceil(maleAttendees / maleRatio);
-    const totalMaleUrinals = Math.ceil(maleAttendees / maleUrinalRatio);
-    const totalAccessibleToilets = Math.max(1, Math.ceil(disabledAttendees / 10));
-
-    let totalToilets = totalFemaleToilets + totalMaleToilets + totalAccessibleToilets;
-
-    // Adjust for servicing
-    const servicingFactor = Math.ceil(duration / servicingInterval);
-    totalToilets += servicingFactor;
-
-    // Add buffer
-    totalToilets = Math.ceil(totalToilets * (1 + buffer / 100));
-
-    // Calculate handwashing facilities (1 per 10 toilets)
-    const handwashingFacilities = Math.ceil(totalToilets / 10);
-
-    const result = {
-      femaleToilets: totalFemaleToilets,
-      maleToilets: totalMaleToilets,
-      maleUrinals: totalMaleUrinals,
-      accessibleToilets: totalAccessibleToilets,
-      handwashingFacilities,
-      totalToilets
-    };
-
-    console.log('Calculation result:', result);
-
-    return NextResponse.json(result);
   } catch (error) {
-    console.error('Calculation error:', error);
+    console.error('Calculator error:', error);
     return NextResponse.json(
-      { error: 'Failed to calculate toilet requirements' },
+      { error: 'Failed to calculate requirements' },
       { status: 500 }
     );
   }

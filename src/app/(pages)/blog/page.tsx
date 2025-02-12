@@ -1,96 +1,78 @@
-import { getAllBlogPosts } from '@/lib/blog'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-
-export const metadata = {
-  title: 'Blog | Toilet Hire Insights and Updates',
-  description: 'Stay informed with our latest articles about portable toilet hire, event planning, construction site facilities, and sanitation solutions.'
-}
+import { getAllPosts, getAllTags, type BlogPost } from '@/lib/blog'
+import { cn } from '@/lib/utils'
 
 export default async function BlogPage() {
-  const posts = await getAllBlogPosts()
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut'
-      }
-    }
-  }
+  const [posts, tags] = await Promise.all([
+    getAllPosts(),
+    getAllTags()
+  ])
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8">Latest Articles</h1>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-      >
-        {posts.map(post => (
-          <motion.article
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Blog</h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Stay updated with our latest insights, guides, and news about portable toilet hire and event sanitation solutions.
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4">Topics</h2>
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/blog/tag/${tag.toLowerCase()}`}
+              className={cn(
+                "px-3 py-1 rounded-full text-sm",
+                "bg-primary/10 text-primary hover:bg-primary/20",
+                "transition-colors duration-200"
+              )}
+            >
+              {tag}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post: BlogPost) => (
+          <Link
             key={post.slug}
-            variants={itemVariants}
-            className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+            href={`/blog/${post.slug}`}
+            className={cn(
+              "group relative bg-card rounded-lg overflow-hidden",
+              "border border-border hover:border-primary",
+              "transition-all duration-200 transform hover:-translate-y-1"
+            )}
           >
             {post.image && (
-              <div className="relative h-48">
+              <div className="relative h-48 overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-200 group-hover:scale-105"
                 />
               </div>
             )}
             <div className="p-6">
-              <h2 className="text-2xl font-bold mb-3">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="hover:text-primary transition-colors duration-200"
-                >
-                  {post.title}
-                </Link>
+              <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                {post.title}
               </h2>
               <p className="text-muted-foreground mb-4">
                 {post.description}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-4 text-sm text-muted-foreground">
-                {new Date(post.publishedAt).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                })}
+              <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <span>{post.author}</span>
+                <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
               </div>
             </div>
-          </motion.article>
+          </Link>
         ))}
-      </motion.div>
+      </div>
     </div>
   )
 }

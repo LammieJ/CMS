@@ -68,13 +68,13 @@ export const generateBlogSchema = async () => {
     "blogPost": posts.map(post => ({
       "@type": "BlogPosting",
       "headline": post.title,
-      "description": post.excerpt,
+      "description": post.description,
       "image": post.image || '/blog/placeholder.svg',
-      "datePublished": post.date,
-      "dateModified": post.date,
+      "datePublished": post.publishedAt,
+      "dateModified": post.publishedAt,
       "author": {
         "@type": "Organization",
-        "name": "Chelford Mobile Services"
+        "name": post.author
       },
       "publisher": {
         "@type": "Organization",

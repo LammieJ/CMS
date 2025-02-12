@@ -9,7 +9,12 @@ import { locations } from "./location-data";
 import Script from "next/script";
 import { locationsSchema } from "./metadata";
 import LocationSearch from "@/components/locations/location-search";
-import ServiceAreaMap from "@/components/locations/service-area-map";
+import { ServiceAreaMap } from "@/components/locations/service-area-map";
+
+const CHESTER_COORDINATES = {
+  lat: 53.1905,
+  lng: -2.8916
+};
 
 export default function LocationsPage() {
   const [sortAscending, setSortAscending] = useState(true);
@@ -49,8 +54,8 @@ export default function LocationsPage() {
 
         <div className="mb-12">
           <ServiceAreaMap 
-            locations={locations}
-            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
+            center={CHESTER_COORDINATES}
+            radius={40} // 40 mile radius
           />
         </div>
 

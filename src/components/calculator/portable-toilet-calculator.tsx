@@ -48,32 +48,6 @@ export function PortableToiletCalculator() {
     }
   }
 
-  const sendQuote = async (email: string) => {
-    if (!result) return
-
-    try {
-      const response = await fetch('/api/calculator/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          result,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to send quote')
-      }
-
-      toast.success('Quote sent successfully!')
-      
-    } catch {
-      toast.error('Failed to send quote. Please try again.')
-    }
-  }
-
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="grid gap-8 md:grid-cols-2">

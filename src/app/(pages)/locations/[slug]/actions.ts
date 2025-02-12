@@ -21,7 +21,10 @@ export async function getLocationContent(slug: string): Promise<LocationResponse
   }
 
   try {
-    const content = await generateLocationContent(location.name, location.areas)
+    const content = await generateLocationContent({ 
+      location: location.name, 
+      description: location.areas.join(', ') 
+    })
     
     // If OpenAI generation fails, provide enhanced fallback content
     if (!content) {

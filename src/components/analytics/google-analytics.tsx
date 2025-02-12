@@ -7,12 +7,12 @@ const GA_MEASUREMENT_ID = 'G-7V1PZD2H6T'
 
 declare global {
   interface Window {
-    dataLayer: any[]
-    gtag: (...args: any[]) => void
+    dataLayer: unknown[]
+    gtag: (command: string, ...args: unknown[]) => void
   }
 }
 
-function gtag(...args: any[]) {
+function gtag(command: string, ...args: unknown[]): void {
   window.dataLayer.push(args)
 }
 

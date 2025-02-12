@@ -1,4 +1,4 @@
-import PortableToiletCalculator from "@/components/calculator/portable-toilet-calculator";
+import { PortableToiletCalculator } from "@/components/calculator/portable-toilet-calculator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

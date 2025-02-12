@@ -11,7 +11,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
 
-  const seoContent = await generateLocationContent(location.name, location.areas)
+  const seoContent = await generateLocationContent({ 
+    location: location.name, 
+    description: location.areas.join(', ') 
+  })
   if (!seoContent) {
     // Enhanced fallback metadata
     return {

@@ -1,15 +1,24 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(request: Request) {
+export const runtime = 'edge'
+
+interface ContactFormData {
+  name: string
+  email: string
+  phone?: string
+  service: string
+  eventDate?: string
+  duration?: string
+  location?: string
+  message: string
+}
+
+export async function POST(request: NextRequest) {
   try {
-    const data = await request.json()
-    
-    // Here you would integrate with your email service provider
-    // Example using a service like SendGrid, Mailgun, etc.
-    // For now, we'll just return success
+    const data = await request.json() as ContactFormData
     
     // Validate required fields
-    const requiredFields = ['name', 'email', 'service', 'message']
+    const requiredFields = ['name', 'email', 'service', 'message'] as const
     for (const field of requiredFields) {
       if (!data[field]) {
         return NextResponse.json(
@@ -17,6 +26,15 @@ export async function POST(request: Request) {
           { status: 400 }
         )
       }
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(data.email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format' },
+        { status: 400 }
+      )
     }
 
     // TODO: Add your email service integration here
@@ -37,12 +55,16 @@ export async function POST(request: Request) {
     // })
 
     return NextResponse.json({ 
+      success: true,
       message: 'Form submitted successfully' 
     })
   } catch (error) {
     console.error('Contact form error:', error)
     return NextResponse.json(
-      { error: 'Failed to submit form' },
+      { 
+        success: false,
+        error: 'Failed to submit form' 
+      },
       { status: 500 }
     )
   }

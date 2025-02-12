@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: Props) {
   const postSchema = generatePostSchema(post)
   const breadcrumbSchema = generateBreadcrumbSchema(post)
   const socialShareSchema = generateSocialShareSchema(post)
-  const relatedContentSchema = generateRelatedContentSchema(post)
+  const relatedContentSchema = generateRelatedContentSchema([post]) // Pass as array
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -66,13 +66,13 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <article className="blog-content mdx-content" itemScope itemType="https://schema.org/BlogPosting">
         <meta itemProp="headline" content={post.title} />
-        <meta itemProp="description" content={post.excerpt} />
-        <meta itemProp="datePublished" content={post.date} />
-        <meta itemProp="dateModified" content={post.date} />
+        <meta itemProp="description" content={post.description} />
+        <meta itemProp="datePublished" content={post.publishedAt} />
+        <meta itemProp="dateModified" content={post.publishedAt} />
         <header className="mb-12">
           <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
           <div className="flex items-center gap-6 text-lg dark:text-primary" itemProp="datePublished">
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
             {post.tags && (
               <div className="flex gap-2">
                 {post.tags.map(tag => (
